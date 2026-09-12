@@ -1,0 +1,6 @@
+{
+  "name": "Nacre",
+  "description": "Affordable, anti-tarnish, Pinterest-coded demi-fine jewellery in 18k gold plating. Shop curated bracelets, rings, earrings, and neck pieces.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
