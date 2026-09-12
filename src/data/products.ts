@@ -2,7 +2,7 @@ import { Product } from '../types';
 
 export const PRODUCTS: Product[] = [
   // ==========================================
-  // BRACELETS (Referencing be, bg, bgf, gbf)
+  // BRACELETS (6 curated styles)
   // ==========================================
   {
     id: 'bracelet-riviera-pearl',
@@ -16,13 +16,12 @@ export const PRODUCTS: Product[] = [
     reviewCount: 142,
     images: [
       '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
-      'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80',
-      '/src/assets/images/universe_summer_pretty_1789199587798.jpg'
+      'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Anti-Tarnish', 'Real Seed Pearls', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
     tier: 'signature',
-    referenceImageName: 'be.JPG (Freshwater pearl strand with gold)',
+    referenceImageName: 'be.JPG (Freshwater pearl strand with gold beads)',
     description: 'A romantic, sun-drenched bracelet designed for salt-air mornings and barefoot strolls. Hand-strung with genuine miniature freshwater seed pearls nestled between gleaming 18K gold faceted spacer beads, finished with a delicate heart charm extender tag.',
     materials: 'Natural freshwater cultured seed pearls, 18K gold PVD plating on 316L surgical stainless steel core. Waterproof and hypoallergenic.',
     dimensions: '16cm chain length + 4cm adjustable heart extender link.',
@@ -43,8 +42,7 @@ export const PRODUCTS: Product[] = [
     reviewCount: 98,
     images: [
       '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
-      '/src/assets/images/paperclip_bracelet_1789217343899.jpg',
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/paperclip_bracelet_1789217343899.jpg'
     ],
     badges: ['18K Gold Plated', 'Waterproof', 'Micro-Pavé'],
     universe: 'bridgerton',
@@ -70,8 +68,7 @@ export const PRODUCTS: Product[] = [
     reviewCount: 76,
     images: [
       '/src/assets/images/paperclip_bracelet_1789217343899.jpg',
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
     ],
     badges: ['Anti-Tarnish', '18K Gold Plated', 'Editor’s Pick'],
     universe: 'emily-in-paris',
@@ -111,9 +108,61 @@ export const PRODUCTS: Product[] = [
     isUnder999: false,
     stylingNote: 'Pair with tailored blazers, dark manicures, and iced coffees on the Met steps.'
   },
+  {
+    id: 'bracelet-croissant-dome',
+    name: 'The Riviera Croissant Dome Bangle',
+    tagline: 'Sculptural ribbed hollow dome cuff in mirror-polish 18k gold',
+    category: 'bracelets',
+    metal: 'gold',
+    price: 1650,
+    originalPrice: 2199,
+    rating: 4.9,
+    reviewCount: 89,
+    images: [
+      '/src/assets/images/croissant_bangle_1789218346424.jpg',
+      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg'
+    ],
+    badges: ['Anti-Tarnish', 'French Riveted', 'Chic Minimal'],
+    universe: 'emily-in-paris',
+    tier: 'signature',
+    referenceImageName: 'Croissant dome minimal gold cuff',
+    description: 'A timeless French pastry silhouette re-imagined into heavy-look, featherlight wristwear. Its tapered ergonomic contour slips on effortlessly and hugs the wrist with warm golden glow.',
+    materials: '18K Gold PVD electroplated over surgical 316L stainless steel. Waterproof, sunscreen-safe, and perfume-proof.',
+    dimensions: 'Internal diameter 60mm with smooth slip-on contoured open closure.',
+    isBestSeller: false,
+    isNewArrival: true,
+    isUnder999: false,
+    stylingNote: 'Stack with an ultra-thin diamond tennis bracelet for the ultimate Pinterest wrist-party.'
+  },
+  {
+    id: 'bracelet-lumina-tennis',
+    name: 'The Lumina Micro-Pavé Tennis Bracelet',
+    tagline: 'Continuous line of brilliant-cut Austrian crystals in 18k bezel',
+    category: 'bracelets',
+    metal: 'gold',
+    price: 1399,
+    originalPrice: 1899,
+    rating: 5.0,
+    reviewCount: 153,
+    images: [
+      '/src/assets/images/tennis_bracelet_1789218435495.jpg',
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
+    ],
+    badges: ['Anti-Tarnish', 'Everyday Sparkle', 'Bestseller'],
+    universe: 'gossip-girl',
+    tier: 'everyday',
+    referenceImageName: 'Minimalist line crystal tennis bracelet',
+    description: 'The elusive everyday tennis bracelet that feels completely weightless and never flips. Individually bezel-set round brilliant crystals give constant, liquid twinkle from day to night.',
+    materials: 'Triple-layer 18K Yellow Gold PVD over steel, premium Austrian cubic zirconia stones, double-latch safety clasp.',
+    dimensions: '16cm + 2cm removable safety extender.',
+    isBestSeller: true,
+    isNewArrival: false,
+    isUnder999: false,
+    stylingNote: 'Never take it off — sleek enough for pilates, dazzling enough for cocktail hour.'
+  },
 
   // ==========================================
-  // RINGS (Referencing IMG_1188, IMG_1189, IMG_1190, IMG_1191)
+  // RINGS (6 curated styles)
   // ==========================================
   {
     id: 'ring-eternal-twist',
@@ -219,9 +268,61 @@ export const PRODUCTS: Product[] = [
     isUnder999: false,
     stylingNote: 'The wavy contour stacks harmoniously above a plain engagement or signet band.'
   },
+  {
+    id: 'ring-solitaire-wishbone-stack',
+    name: 'The Wishbone Pavé Stacker Duo',
+    tagline: 'Contoured chevron wishbone band nestled with brilliant solitaire',
+    category: 'rings',
+    metal: 'gold',
+    price: 949,
+    originalPrice: 1399,
+    rating: 4.9,
+    reviewCount: 118,
+    images: [
+      '/src/assets/images/wishbone_ring_1789218391745.jpg',
+      '/src/assets/images/twist_silk_ring_1789217753853.jpg'
+    ],
+    badges: ['Under ₹999', 'Anti-Tarnish', 'Duo Stacker'],
+    universe: 'gossip-girl',
+    tier: 'everyday',
+    referenceImageName: 'Wishbone chevron micro-pave ring stack',
+    description: 'A match made in heaven. A sharp geometric wishbone arc lined with glittering micro-pavé crystals creates an optical focal point that elongates your fingers effortlessly.',
+    materials: '18K Yellow Gold PVD coating over titanium stainless steel core. Soap, sanitizer, and lotion proof.',
+    sizes: ['US 5', 'US 6', 'US 7', 'US 8', 'US 9'],
+    isBestSeller: true,
+    isNewArrival: false,
+    isUnder999: true,
+    stylingNote: 'Point the chevron apex down toward your knuckles for a modern architectural silhouette.'
+  },
+  {
+    id: 'ring-starburst-celestial-signet',
+    name: 'The Celestial Starburst Signet Ring',
+    tagline: 'Hand-engraved starlight compass with glistening diamond solitaire',
+    category: 'rings',
+    metal: 'gold',
+    price: 999,
+    originalPrice: 1450,
+    rating: 4.8,
+    reviewCount: 77,
+    images: [
+      '/src/assets/images/solitaire_ring_1789218497424.jpg',
+      '/src/assets/images/sapphire_ring_1789217784742.jpg'
+    ],
+    badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Signet'],
+    universe: 'summer-i-turned-pretty',
+    tier: 'everyday',
+    referenceImageName: 'Dainty starburst engraved signet ring',
+    description: 'A dainty modern update to classic heirloom signets. An oval mirror-buffed face is engraved with an eight-point starlight compass centered with a radiant micro-crystal.',
+    materials: '18K Gold PVD over solid hypo-allergenic medical steel core.',
+    sizes: ['US 5', 'US 6', 'US 7', 'US 8'],
+    isBestSeller: false,
+    isNewArrival: true,
+    isUnder999: true,
+    stylingNote: 'The ultimate pinky or index finger statement ring.'
+  },
 
   // ==========================================
-  // EARRINGS (Referencing ef.JPG, e.JPG, IMG_1184, IMG_1185)
+  // EARRINGS (6 curated styles)
   // ==========================================
   {
     id: 'earrings-pave-radiance-huggies',
@@ -327,9 +428,61 @@ export const PRODUCTS: Product[] = [
     isUnder999: false,
     stylingNote: 'Clean, modern, and goes with everything from vintage denim jackets to evening slip dresses.'
   },
+  {
+    id: 'earrings-baroque-pearl-huggies',
+    name: 'The Baroque Pearl Droplet Huggies',
+    tagline: 'Pavé crystal huggie hoops cradling luminous teardrop freshwater pearls',
+    category: 'earrings',
+    metal: 'gold',
+    price: 1299,
+    originalPrice: 1699,
+    rating: 4.9,
+    reviewCount: 112,
+    images: [
+      '/src/assets/images/pearl_drop_earrings_1789218367457.jpg',
+      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
+    ],
+    badges: ['Real Cultured Pearls', 'Anti-Tarnish', 'Bestseller'],
+    universe: 'summer-i-turned-pretty',
+    tier: 'signature',
+    referenceImageName: 'Organic baroque pearl huggie drops on blush velvet',
+    description: 'The epitome of coastal Mediterranean luxury. Small huggie hoops encrusted with micro-pavé diamonds suspend genuine organic teardrop freshwater pearls with high iridescent luster.',
+    materials: '18K Gold PVD over hypoallergenic surgical steel, genuine freshwater teardrop pearls, AAA+ micro CZ.',
+    dimensions: '11mm hoop diameter, 10mm organic pearl drop.',
+    isBestSeller: true,
+    isNewArrival: false,
+    isUnder999: false,
+    stylingNote: 'The pearls are detachable! Wear the huggies solo on casual days or slide the pearls back on for evenings.'
+  },
+  {
+    id: 'earrings-cherie-pave-heart-studs',
+    name: 'The Chérie Pavé Micro Heart Studs',
+    tagline: 'Petite 18k gold heart studs paved with brilliant diamond crystals',
+    category: 'earrings',
+    metal: 'gold',
+    price: 799,
+    originalPrice: 1099,
+    rating: 4.8,
+    reviewCount: 94,
+    images: [
+      '/src/assets/images/heart_stud_earrings_1789218456085.jpg',
+      '/src/assets/images/split_huggies_1789217737854.jpg'
+    ],
+    badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Studs'],
+    universe: 'to-all-the-boys',
+    tier: 'everyday',
+    referenceImageName: 'Dainty micro-pave heart studs on handmade paper',
+    description: 'Dainty, flat-back friendly, and utterly charming. Delicate heart studs encrusted with sparkling Austrian crystals that sit flush against your lobe or cartilage piercing.',
+    materials: '18K Gold PVD over 316L surgical stainless steel. Hypoallergenic post with butterfly clutch.',
+    dimensions: '6mm × 6mm heart silhouette.',
+    isBestSeller: false,
+    isNewArrival: true,
+    isUnder999: true,
+    stylingNote: 'Ideal for secondary lobe, helix, or tragus piercings.'
+  },
 
   // ==========================================
-  // NECK PIECES / NECKLACES (Referencing IMG_1182, n, nm, nv)
+  // NECK PIECES / NECKLACES (6 curated styles)
   // ==========================================
   {
     id: 'necklace-royal-swan-pendant',
@@ -435,8 +588,62 @@ export const PRODUCTS: Product[] = [
     isUnder999: false,
     stylingNote: 'The piece everyone stops to ask about. The weighted heart stays centered on your collarbone all day.'
   },
+  {
+    id: 'necklace-liquid-herringbone-snake',
+    name: 'The Liquid Gold Herringbone Chain',
+    tagline: 'Ultra-fluid 3mm flat weave chain that contours the neck like silk',
+    category: 'necklaces',
+    metal: 'gold',
+    price: 1299,
+    originalPrice: 1749,
+    rating: 4.9,
+    reviewCount: 168,
+    images: [
+      '/src/assets/images/snake_chain_neck_1789218313736.jpg',
+      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
+    ],
+    badges: ['Anti-Tarnish', 'Liquid Gold', 'Bestseller'],
+    universe: 'gossip-girl',
+    tier: 'signature',
+    referenceImageName: 'Liquid herringbone flat chain on limestone',
+    description: 'The definitive foundation piece. Highly polished flat-woven chevron links fit together seamlessly to reflect light like a ribbon of liquid gold across your clavicle without pinching or kinking.',
+    materials: 'Triple 18K Yellow Gold PVD over reinforced surgical steel. Waterproof, sweatproof, tangle-free.',
+    dimensions: '40cm length + 5cm extender with stamped signature lobster clasp.',
+    isBestSeller: true,
+    isNewArrival: false,
+    isUnder999: false,
+    stylingNote: 'Lies flat against the skin; style under an open shirt or layered with the Royal Swan Pendant.'
+  },
+  {
+    id: 'necklace-ethereal-marquise-droplet',
+    name: 'The Ethereal Marquise Droplet Pendant',
+    tagline: 'Floating faceted marquise crystal on delicate diamond-cut cable chain',
+    category: 'necklaces',
+    metal: 'gold',
+    price: 1099,
+    originalPrice: 1499,
+    rating: 4.8,
+    reviewCount: 92,
+    images: [
+      '/src/assets/images/droplet_necklace_1789218417081.jpg',
+      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg'
+    ],
+    badges: ['Anti-Tarnish', 'Floating Crystal', 'New In'],
+    universe: 'to-all-the-boys',
+    tier: 'everyday',
+    referenceImageName: 'Marquise crystal droplet pendant on ceramic tray',
+    description: 'Whisper-light and luminous. A single faceted marquise-cut crystal hangs freely from a delicate diamond-cut cable chain, catching glimmers of light as you move.',
+    materials: '18K Gold PVD over surgical stainless steel, optical clarity cubic zirconia marquise gemstone.',
+    dimensions: '38cm chain + 5cm extension chain.',
+    isBestSeller: false,
+    isNewArrival: true,
+    isUnder999: false,
+    stylingNote: 'Subtle enough for daily school or office wear, yet adds an instant feminine polish.'
+  },
 
-  // Complementary pieces for full sets and gifting
+  // ==========================================
+  // COMPLEMENTARY PIECES & CURATED SETS
+  // ==========================================
   {
     id: 'anklet-bon-voyage-pearl',
     name: 'The Bon Voyage Pearl & Chain Anklet',
@@ -454,6 +661,7 @@ export const PRODUCTS: Product[] = [
     badges: ['Under ₹999', 'Beach-Proof', 'Anti-Tarnish'],
     universe: 'summer-i-turned-pretty',
     tier: 'everyday',
+    referenceImageName: 'Dainty seed pearl anklet',
     description: 'Dainty, salt-water safe anklet with mini organic seed pearls and diamond-cut curb links.',
     materials: '18K Gold PVD on 316L steel, real mini cultured seed pearls.',
     dimensions: '21cm + 5cm extender.',
@@ -480,6 +688,7 @@ export const PRODUCTS: Product[] = [
     badges: ['Save ₹648', 'Luxury Gift Box Included', 'Bundle & Save'],
     universe: 'summer-i-turned-pretty',
     tier: 'fine-edit',
+    referenceImageName: 'Curated 3-piece introductory gift box',
     description: 'The definitive Nacre introductory set. Includes the Riviera Seed Pearl Strand, Pavé Radiance Huggies, and the Endless Knot Collar, packaged together in our midnight navy keepsake velvet presentation box with gold foil ribbon.',
     materials: '18K Gold PVD over stainless steel, real freshwater seed pearls, AAA+ CZ crystals.',
     isBestSeller: true,
@@ -494,11 +703,17 @@ export const REVIEWS: { [key: string]: string[] } = {
     '“I have worn this into the Arabian sea in Goa and into hot showers for 3 weeks straight. Still looks brand new, zero tarnishing. Absolutely stunning!” — Rhea K., Mumbai',
     '“The seed pearls are so delicate and the heart tag adds such a cute touch. 10/10!” — Alisha M., Delhi'
   ],
+  'bracelet-knot-of-monaco-bangle': [
+    '“The crossover design is so unique. Feels so solid and luxury on the wrist without being heavy.” — Tanya V., Mumbai'
+  ],
   'earrings-pave-radiance-huggies': [
     '“The velvet display shot is what made me buy this! The wide huggies are so sparkly and comfortable to sleep in. Zero irritation on my sensitive ears.” — Shreya B., Bangalore',
     '“Literally obsessed. Never taking these hoops off.” — Natasha T., Mumbai'
   ],
   'necklace-royal-swan-pendant': [
     '“My boyfriend gave this to me for our anniversary. The blush pink stone in the swan is SO romantic and expensive-looking. Comes in gorgeous packaging.” — Pooja S., Bengaluru'
+  ],
+  'ring-eternal-twist': [
+    '“Looks exactly like the photo on the silk. So comfortable and has not tarnished at all despite daily hand washing.” — Meera D., Pune'
   ]
 };
