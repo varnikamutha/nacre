@@ -2,7 +2,7 @@ import { Product } from '../types';
 
 export const PRODUCTS: Product[] = [
   // ==========================================
-  // BRACELETS (Referencing IMG_1182, IMG_1184, IMG_1185, IMG_1190)
+  // BRACELETS (Referencing be, bg, bgf, gbf)
   // ==========================================
   {
     id: 'bracelet-riviera-pearl',
@@ -15,14 +15,14 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 142,
     images: [
+      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
       'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80',
       '/src/assets/images/universe_summer_pretty_1789199587798.jpg'
     ],
     badges: ['Anti-Tarnish', 'Real Seed Pearls', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
     tier: 'signature',
-    referenceImageName: 'IMG_1182.JPG (Pearl strand on porcelain)',
+    referenceImageName: 'be.JPG (Freshwater pearl strand with gold)',
     description: 'A romantic, sun-drenched bracelet designed for salt-air mornings and barefoot strolls. Hand-strung with genuine miniature freshwater seed pearls nestled between gleaming 18K gold faceted spacer beads, finished with a delicate heart charm extender tag.',
     materials: 'Natural freshwater cultured seed pearls, 18K gold PVD plating on 316L surgical stainless steel core. Waterproof and hypoallergenic.',
     dimensions: '16cm chain length + 4cm adjustable heart extender link.',
@@ -42,15 +42,16 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 98,
     images: [
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
+      '/src/assets/images/paperclip_bracelet_1789217343899.jpg',
+      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80'
     ],
-    badges: ['18K Rose Gold Plated', 'Waterproof', 'Micro-Pavé'],
+    badges: ['18K Gold Plated', 'Waterproof', 'Micro-Pavé'],
     universe: 'bridgerton',
     tier: 'signature',
-    referenceImageName: 'IMG_1184.JPG (Twisted pave bangle on slate)',
-    description: 'An ethereal twist cuff capturing romantic starlight. Featuring a fluid helical curve inset with hand-set pavé round brilliant cubic zirconia stones on one edge and mirror-polished rose gold on the other, equipped with a discreet side safety clasp.',
-    materials: 'Triple-layer 18K Rose Gold PVD over solid 316L stainless steel, AAA+ Austrian pavé cubic zirconia crystals.',
+    referenceImageName: 'bg.JPG (Sculptural twisted pave torque bangle)',
+    description: 'An ethereal twist cuff capturing romantic starlight. Featuring a fluid helical curve inset with hand-set pavé round brilliant cubic zirconia stones on one edge and mirror-polished gold on the other, equipped with a discreet side safety clasp.',
+    materials: 'Triple-layer 18K Gold PVD over solid 316L stainless steel, AAA+ Austrian pavé cubic zirconia crystals.',
     dimensions: 'Standard 58mm inner diameter (fits wrists up to 17.5cm) with hidden click-hinge lock.',
     isBestSeller: true,
     isNewArrival: false,
@@ -68,13 +69,14 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 76,
     images: [
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/paperclip_bracelet_1789217343899.jpg',
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
+      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Anti-Tarnish', '18K Gold Plated', 'Editor’s Pick'],
     universe: 'emily-in-paris',
     tier: 'signature',
-    referenceImageName: 'IMG_1185.JPG (Open oval link cluster bracelet on stand)',
+    referenceImageName: 'bgf.JPG (French open oval link paperclip chain)',
     description: 'Warm, luminous, and undeniably Parisian. Elongated hollow-silhouette oval links alternate seamlessly with circular pavé crystal cluster medallions, giving you high-fashion presence with featherweight comfort.',
     materials: '18K Yellow Gold PVD on hypoallergenic medical-grade steel base, micro-pavé CZ crystals.',
     dimensions: '17cm length + 3cm extender chain with custom Nacre teardrop tag.',
@@ -94,13 +96,13 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 114,
     images: [
-      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg',
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
     ],
     badges: ['Anti-Tarnish', 'Waterproof', 'Signature Tier'],
     universe: 'gossip-girl',
     tier: 'signature',
-    referenceImageName: 'IMG_1190.JPG (Crossover crystal knot cuff)',
+    referenceImageName: 'gbf.JPG (Overlapping crossover crystal knot cuff)',
     description: 'Clean architectural lines meet Upper East Side luxury. A polished gold cuff tapers into a double band gathered at the crest with a sparkling pavé crystal collar ring that stays firmly in place without snagging.',
     materials: '18K Yellow Gold PVD over vacuum-tempered steel, encrusted with high-clarity pavé CZ.',
     dimensions: 'Oval contour 60mm × 50mm inner circumference with spring tension hinge.',
@@ -111,7 +113,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // RINGS (Referencing bgf, e, ef, gbf)
+  // RINGS (Referencing IMG_1188, IMG_1189, IMG_1190, IMG_1191)
   // ==========================================
   {
     id: 'ring-eternal-twist',
@@ -124,13 +126,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 210,
     images: [
-      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/twist_silk_ring_1789217753853.jpg',
+      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Stacker'],
     universe: 'gossip-girl',
     tier: 'everyday',
-    referenceImageName: 'bgf.JPG (Twisted rope ring on ivory silk)',
+    referenceImageName: 'IMG_1188.JPG (Eternity twist pave ring on ivory silk)',
     description: 'Two fluid ribbons intertwine in an unbroken infinity braid — one mirror-polished 18k gold strand, the other lined with delicate pavé crystals that shimmer softly with every gesture.',
     materials: '18K Yellow Gold PVD on 316L Surgical Stainless Steel. 100% tarnish-proof, sweat-proof, hand-sanitizer safe.',
     sizes: ['US 5', 'US 6', 'US 7', 'US 8', 'US 9'],
@@ -150,13 +152,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 88,
     images: [
-      'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg',
+      'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Demi-Fine', 'Anti-Tarnish', 'Pastel Gemstones'],
     universe: 'to-all-the-boys',
     tier: 'signature',
-    referenceImageName: 'e.JPG (Lilac & rose crystal cluster on silk)',
+    referenceImageName: 'IMG_1189.JPG (Lilac & rose crystal cluster on soft fabric)',
     description: 'Sweet, nostalgic, and subtly magical. A whisper-thin gold band crowns your finger with five graduating pastel lilac and soft champagne cubic zirconia stones prong-set like freshly bloomed spring wildflowers.',
     materials: '18K Gold Plated 925 Sterling Silver core, lab-grown lavender and champagne zircon gemstones.',
     sizes: ['US 5', 'US 6', 'US 7', 'US 8'],
@@ -176,14 +178,14 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 67,
     images: [
-      'https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/blossom_ring_1789217769956.jpg',
+      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg'
     ],
     badges: ['Anti-Tarnish', 'Botanical Sculpted', '18K Gold'],
     universe: 'emily-in-paris',
     tier: 'signature',
-    referenceImageName: 'ef.JPG (Harmonique floral vine ring on silk)',
-    description: 'Inspired by Japanese cherry blossom branches and Parisian botanical gardens. A graceful twig band blooming with three dimensional five-petal blossoms, each centered with a sparkling micro-crystal pistil.',
+    referenceImageName: 'IMG_1190.JPG (Harmonique botanical floral vine ring)',
+    description: 'Inspired by Parisian botanical gardens. A graceful twig band blooming with three dimensional five-petal blossoms, each centered with a sparkling micro-crystal pistil.',
     materials: '18K Yellow Gold PVD over high-grade steel, micro-pave crystal center stones. Never turns fingers green.',
     sizes: ['US 5', 'US 6', 'US 7', 'US 8', 'US 9'],
     isBestSeller: true,
@@ -202,13 +204,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 132,
     images: [
-      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/sapphire_ring_1789217784742.jpg',
+      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Regency Collection', 'Deep Sapphire', 'Anti-Tarnish'],
     universe: 'bridgerton',
     tier: 'signature',
-    referenceImageName: 'gbf.JPG (Sapphire & diamond organic vine ring)',
+    referenceImageName: 'IMG_1191.JPG (Deep blue sapphire foliage vine on linen)',
     description: 'Fit for the Diamond of the Season. An undulating golden vine wraps the finger with asymmetrical prongs holding rich royal blue sapphires and brilliant diamond-white crystals that twinkle like the Mayfair night sky.',
     materials: '18K Yellow Gold PVD over 316L Surgical Steel, laboratory-grown royal sapphire and diamond cubic zirconias.',
     sizes: ['US 5', 'US 6', 'US 7', 'US 8'],
@@ -219,7 +221,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // EARRINGS (Referencing IMG_1189, IMG_1188, be, bg)
+  // EARRINGS (Referencing ef.JPG, e.JPG, IMG_1184, IMG_1185)
   // ==========================================
   {
     id: 'earrings-pave-radiance-huggies',
@@ -232,13 +234,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 320,
     images: [
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg',
+      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Essential', 'Hypoallergenic'],
     universe: 'emily-in-paris',
     tier: 'everyday',
-    referenceImageName: 'IMG_1189.JPG (Wide pave huggies on pink velvet)',
+    referenceImageName: 'ef.JPG (Wide micro-pave huggies on dusty rose velvet)',
     description: 'The pair you will put in and never take out — sleep-in safe, shower-safe, and phone-call safe. Wide channel hugging hoops encrusted with three rows of seamless brilliant-cut pavé crystals that shimmer from every angle.',
     materials: '18K Gold PVD over surgical stainless steel. Ultra-gentle on sensitive earlobes, 100% nickel-free and lead-free.',
     dimensions: '12mm outer diameter, 6mm width, snug click-latch closure.',
@@ -258,13 +260,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 84,
     images: [
-      'https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/heart_drop_earrings_1789217233020.jpg',
+      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
     ],
     badges: ['Anti-Tarnish', 'Faceted Heart Gem', 'New In'],
     universe: 'to-all-the-boys',
     tier: 'signature',
-    referenceImageName: 'IMG_1188.JPG (Double hoop huggies with heart drop on stand)',
+    referenceImageName: 'e.JPG (Double-hoop pave huggies with heart drop charm on stand)',
     description: 'An optical illusion of two layered hoops in a single piercing — one high-polish gold, the other set with pavé crystals, dangling a precision-cut heart crystal that catches romantic candlelight.',
     materials: '18K Yellow Gold PVD over surgical steel core, heart-cut optical grade cubic zirconia drops.',
     dimensions: '14mm hoop drop + 6mm heart charm.',
@@ -275,8 +277,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'earrings-cascading-heart-rain',
-    name: 'The Cascading Heart Rain Huggies',
-    tagline: 'Triple delicate chain waterfalls dripping with pavé heart charms',
+    name: 'The Cascading Starburst Chain Earrings',
+    tagline: 'Triple delicate chain waterfalls dripping with pavé crystal charms',
     category: 'earrings',
     metal: 'gold',
     price: 1450,
@@ -284,13 +286,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 71,
     images: [
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/cascading_chains_1789217722327.jpg',
+      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
     ],
     badges: ['Statement Drop', 'Anti-Tarnish', 'Waterproof'],
     universe: 'to-all-the-boys',
     tier: 'signature',
-    referenceImageName: 'be.JPG (Triple chain heart huggies on rod)',
+    referenceImageName: 'IMG_1184.JPG (Cascading kinetic heart drop chains on rod)',
     description: 'Dramatic movement with featherweight grace. Suspended from a secure gold huggie are three graduated diamond-cut cable chains ending in puffed and pavé double-sided heart charms that dance as you turn your head.',
     materials: 'Triple-dip 18K Gold PVD over stainless steel, micro-pavé zirconia charms.',
     dimensions: '38mm total drop length, comfortable 10mm huggie hoop.',
@@ -310,13 +312,13 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 165,
     images: [
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/split_huggies_1789217737854.jpg',
+      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
     ],
     badges: ['Anti-Tarnish', 'Architectural Dual Band', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
     tier: 'everyday',
-    referenceImageName: 'bg.JPG (Dual curved huggies on linen stand)',
+    referenceImageName: 'IMG_1185.JPG (Dual curved huggie arcs on book stand)',
     description: 'A contemporary silhouette mimicking a double piercing. The split curvature features a slim line of channel-set pave crystals gracefully juxtaposed against a bold, mirror-finished gold ribbon band.',
     materials: '18K Yellow Gold PVD over 316L medical stainless steel. Sweat-proof, perfume-safe, waterproof.',
     dimensions: '14mm height, 7mm width with secure click hinge.',
@@ -327,7 +329,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // NECK PIECES / NECKLACES (Referencing IMG_1191, n, nm, nv)
+  // NECK PIECES / NECKLACES (Referencing IMG_1182, n, nm, nv)
   // ==========================================
   {
     id: 'necklace-royal-swan-pendant',
@@ -340,13 +342,13 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 188,
     images: [
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg',
+      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Regency Fine Tier', 'Blush Pink Gem', 'Anti-Tarnish'],
     universe: 'bridgerton',
     tier: 'fine-edit',
-    referenceImageName: 'IMG_1191.JPG (Rose gold swan necklace in velvet gift box)',
+    referenceImageName: 'IMG_1182.JPG (Royal crystal swan pendant in ivory box)',
     description: 'Symbolizing eternal grace and romantic royalty. A delicate rose-gold box chain suspends a sculpted royal swan completely covered in micro-pavé crystals, cradling a faceted rose-quartz-toned marquise gem at its center.',
     materials: '18K Rose Gold PVD on 925 Sterling Silver, hand-cut pink spinel zirconia & pavé crystals.',
     dimensions: '40cm box chain + 5cm adjustable extender.',
@@ -366,13 +368,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 204,
     images: [
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
+      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Stacker'],
     universe: 'to-all-the-boys',
     tier: 'everyday',
-    referenceImageName: 'n.JPG (Infinity knot necklace on bust)',
+    referenceImageName: 'n.JPG (Infinity collar necklace on ivory)',
     description: 'Simplicity at its most powerful. A seamless, high-polished figure-8 infinity knot that rests flat against the collarbone, threaded seamlessly into an ultra-fine link chain that catches light with every breath.',
     materials: '18K Yellow Gold PVD over surgical stainless steel. Never tarnishes or fades even when worn in the pool.',
     dimensions: '38cm collar length + 5cm extender with lobster clasp.',
@@ -393,12 +395,12 @@ export const PRODUCTS: Product[] = [
     reviewCount: 95,
     images: [
       '/src/assets/images/universe_emily_paris_1789199570293.jpg',
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
     ],
     badges: ['Hand-Poured Enamel', 'Snake Chain', 'Anti-Tarnish'],
     universe: 'emily-in-paris',
     tier: 'signature',
-    referenceImageName: 'nm.JPG (Enamel tulip medallion on snake chain)',
+    referenceImageName: 'nm.JPG (Botanical tulip medallion on snake chain)',
     description: 'An ode to vintage Parisian locket treasures. An organic scalloped gold medallion filled with lustrous hand-poured ivory enamel, centering an embossed 18k gold botanical tulip and suspended from a slinky liquid snake chain.',
     materials: '18K Gold PVD over stainless steel, cold-fired ivory enamel inlay. Waterproof and chip-resistant.',
     dimensions: '42cm snake chain + 5cm extender. Pendant size: 20mm × 13mm.',
@@ -418,13 +420,13 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 147,
     images: [
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80',
+      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg',
       'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
     ],
     badges: ['Anti-Tarnish', '3D Sculpted', 'Most Saved on Pinterest'],
     universe: 'summer-i-turned-pretty',
     tier: 'signature',
-    referenceImageName: 'nv.JPG (Puffed heart pendant on beaded snake chain)',
+    referenceImageName: 'nv.JPG (Minimal 3D puffed heart on satellite chain)',
     description: 'Substantial yet buoyant. A modern, voluptuous 3D puffed heart pendant with a weighted, satisfying tactile feel, gliding on a fine snake chain accented with spaced satellite micro-beads.',
     materials: 'Triple-plated 18K Yellow Gold PVD over solid medical-grade steel. Won’t discolor from sun, sea, or sweat.',
     dimensions: '42cm chain with 5cm extension. Puffed heart: 16mm × 14mm × 6mm.',
@@ -446,8 +448,8 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 52,
     images: [
-      '/src/assets/images/universe_summer_pretty_1789199587798.jpg',
-      'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
+      '/src/assets/images/universe_summer_pretty_1789199587798.jpg'
     ],
     badges: ['Under ₹999', 'Beach-Proof', 'Anti-Tarnish'],
     universe: 'summer-i-turned-pretty',
@@ -471,8 +473,9 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 63,
     images: [
-      '/src/assets/images/nacre_hero_editorial_1789199546846.jpg',
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg',
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
+      '/src/assets/images/nacre_hero_editorial_1789199546846.jpg'
     ],
     badges: ['Save ₹648', 'Luxury Gift Box Included', 'Bundle & Save'],
     universe: 'summer-i-turned-pretty',
@@ -490,6 +493,10 @@ export const REVIEWS: { [key: string]: string[] } = {
   'bracelet-riviera-pearl': [
     '“I have worn this into the Arabian sea in Goa and into hot showers for 3 weeks straight. Still looks brand new, zero tarnishing. Absolutely stunning!” — Rhea K., Mumbai',
     '“The seed pearls are so delicate and the heart tag adds such a cute touch. 10/10!” — Alisha M., Delhi'
+  ],
+  'earrings-pave-radiance-huggies': [
+    '“The velvet display shot is what made me buy this! The wide huggies are so sparkly and comfortable to sleep in. Zero irritation on my sensitive ears.” — Shreya B., Bangalore',
+    '“Literally obsessed. Never taking these hoops off.” — Natasha T., Mumbai'
   ],
   'necklace-royal-swan-pendant': [
     '“My boyfriend gave this to me for our anniversary. The blush pink stone in the swan is SO romantic and expensive-looking. Comes in gorgeous packaging.” — Pooja S., Bengaluru'

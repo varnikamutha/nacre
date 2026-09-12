@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Heart, Star, ShoppingBag, Eye } from 'lucide-react';
 import { Product } from '../types';
 
@@ -17,23 +17,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleWishlist,
   isWishlisted
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const displayImage = isHovered && product.images.length > 1
-    ? product.images[1]
-    : product.images[0];
-
   return (
     <div
       id={`product-card-${product.id}`}
       className="group relative flex flex-col bg-[#FAF7F2] rounded-xl overflow-hidden border border-[#E8E3DA] transition-all duration-300 hover:shadow-lg hover:border-[#C9A461]/60"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Top Image Container */}
       <div className="relative w-full aspect-[4/5] bg-[#ECE7DE] overflow-hidden cursor-pointer" onClick={() => onViewDetails(product)}>
         <img
-          src={displayImage}
+          src={product.images[0]}
           alt={product.name}
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
