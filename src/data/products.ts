@@ -15,7 +15,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 142,
     images: [
-      '/src/assets/images/pearl_strand_bracelet_1789910930879.jpg'
+      '/assets/images/pearl_strand_bracelet_1789910930879.jpg'
     ],
     badges: ['Anti-Tarnish', 'Real Seed Pearls', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 98,
     images: [
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
+      '/assets/images/twisted_gold_bangle_1789217246681.jpg'
     ],
     badges: ['18K Gold Plated', 'Waterproof', 'Micro-Pavé'],
     universe: 'bridgerton',
@@ -65,7 +65,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 76,
     images: [
-      '/src/assets/images/paperclip_bracelet_1789217343899.jpg'
+      '/assets/images/paperclip_bracelet_1789217343899.jpg'
     ],
     badges: ['Anti-Tarnish', '18K Gold Plated', 'Editor’s Pick'],
     universe: 'emily-in-paris',
@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 114,
     images: [
-      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg'
+      '/assets/images/crossover_knot_bangle_1789217703206.jpg'
     ],
     badges: ['Anti-Tarnish', 'Waterproof', 'Signature Tier'],
     universe: 'emily-in-paris',
@@ -115,7 +115,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 89,
     images: [
-      '/src/assets/images/croissant_bangle_1789218346424.jpg'
+      '/assets/images/croissant_bangle_1789218346424.jpg'
     ],
     badges: ['Anti-Tarnish', 'French Riveted', 'Chic Minimal'],
     universe: 'emily-in-paris',
@@ -140,7 +140,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 153,
     images: [
-      '/src/assets/images/tennis_bracelet_1789218435495.jpg'
+      '/assets/images/tennis_bracelet_1789218435495.jpg'
     ],
     badges: ['Anti-Tarnish', 'Everyday Sparkle', 'Bestseller'],
     universe: 'bridgerton',
@@ -169,7 +169,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 210,
     images: [
-      '/src/assets/images/twist_silk_ring_1789217753853.jpg'
+      '/assets/images/twist_silk_ring_1789217753853.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Stacker'],
     universe: 'summer-i-turned-pretty',
@@ -194,7 +194,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 88,
     images: [
-      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg'
+      '/assets/images/gemstone_vine_ring_1789217278517.jpg'
     ],
     badges: ['Demi-Fine', 'Anti-Tarnish', 'Pastel Gemstones'],
     universe: 'to-all-the-boys',
@@ -219,7 +219,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 67,
     images: [
-      '/src/assets/images/blossom_ring_1789217769956.jpg'
+      '/assets/images/blossom_ring_1789217769956.jpg'
     ],
     badges: ['Anti-Tarnish', 'Botanical Sculpted', '18K Gold'],
     universe: 'emily-in-paris',
@@ -244,7 +244,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 132,
     images: [
-      '/src/assets/images/sapphire_ring_1789217784742.jpg'
+      '/assets/images/sapphire_ring_1789217784742.jpg'
     ],
     badges: ['Regency Collection', 'Deep Sapphire', 'Anti-Tarnish'],
     universe: 'bridgerton',
@@ -269,7 +269,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 118,
     images: [
-      '/src/assets/images/wishbone_ring_1789218391745.jpg'
+      '/assets/images/wishbone_ring_1789218391745.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Duo Stacker'],
     universe: 'emily-in-paris',
@@ -294,7 +294,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 77,
     images: [
-      '/src/assets/images/solitaire_ring_1789218497424.jpg'
+      '/assets/images/solitaire_ring_1789218497424.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Signet'],
     universe: 'summer-i-turned-pretty',
@@ -323,7 +323,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 320,
     images: [
-      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
+      '/assets/images/pave_huggie_velvet_1789217215432.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Essential', 'Hypoallergenic'],
     universe: 'emily-in-paris',
@@ -348,7 +348,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 84,
     images: [
-      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
+      '/assets/images/heart_drop_earrings_1789217233020.jpg'
     ],
     badges: ['Anti-Tarnish', 'Faceted Heart Gem', 'New In'],
     universe: 'to-all-the-boys',
@@ -373,7 +373,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 71,
     images: [
-      '/src/assets/images/cascading_chains_1789217722327.jpg'
+      '/assets/images/cascading_chains_1789217722327.jpg'
     ],
     badges: ['Statement Drop', 'Anti-Tarnish', 'Waterproof'],
     universe: 'to-all-the-boys',
@@ -398,7 +398,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 165,
     images: [
-      '/src/assets/images/split_huggies_1789217737854.jpg'
+      '/assets/images/split_huggies_1789217737854.jpg'
     ],
     badges: ['Anti-Tarnish', 'Architectural Dual Band', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -423,7 +423,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 112,
     images: [
-      '/src/assets/images/pearl_drop_earrings_1789218367457.jpg'
+      '/assets/images/pearl_drop_earrings_1789218367457.jpg'
     ],
     badges: ['Real Cultured Pearls', 'Anti-Tarnish', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -448,7 +448,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 94,
     images: [
-      '/src/assets/images/heart_stud_earrings_1789218456085.jpg'
+      '/assets/images/heart_stud_earrings_1789218456085.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Studs'],
     universe: 'to-all-the-boys',
@@ -477,7 +477,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 188,
     images: [
-      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg'
+      '/assets/images/swan_crystal_pendant_1789217305759.jpg'
     ],
     badges: ['Regency Fine Tier', 'Blush Pink Gem', 'Anti-Tarnish'],
     universe: 'bridgerton',
@@ -502,7 +502,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 204,
     images: [
-      '/src/assets/images/knot_collar_necklace_1789910944582.jpg'
+      '/assets/images/knot_collar_necklace_1789910944582.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Infinity Knot', 'Cousins Beach Edit'],
     universe: 'summer-i-turned-pretty',
@@ -527,7 +527,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 95,
     images: [
-      '/src/assets/images/tulip_enamel_neck_1789910959953.jpg'
+      '/assets/images/tulip_enamel_neck_1789910959953.jpg'
     ],
     badges: ['Hand-Poured Enamel', 'Snake Chain', 'Anti-Tarnish'],
     universe: 'emily-in-paris',
@@ -552,7 +552,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 147,
     images: [
-      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
+      '/assets/images/puffed_heart_necklace_1789217324035.jpg'
     ],
     badges: ['Anti-Tarnish', '3D Sculpted', 'Most Saved on Pinterest'],
     universe: 'summer-i-turned-pretty',
@@ -577,7 +577,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 168,
     images: [
-      '/src/assets/images/snake_chain_neck_1789218313736.jpg'
+      '/assets/images/snake_chain_neck_1789218313736.jpg'
     ],
     badges: ['Anti-Tarnish', 'Liquid Gold', 'Bestseller'],
     universe: 'emily-in-paris',
@@ -602,7 +602,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 92,
     images: [
-      '/src/assets/images/droplet_necklace_1789218417081.jpg'
+      '/assets/images/droplet_necklace_1789218417081.jpg'
     ],
     badges: ['Anti-Tarnish', 'Floating Crystal', 'New In'],
     universe: 'to-all-the-boys',
@@ -631,7 +631,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 52,
     images: [
-      '/src/assets/images/pearl_anklet_beach_1789910973597.jpg'
+      '/assets/images/pearl_anklet_beach_1789910973597.jpg'
     ],
     badges: ['Under ₹999', 'Beach-Proof', 'Anti-Tarnish'],
     universe: 'summer-i-turned-pretty',
@@ -656,7 +656,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 63,
     images: [
-      '/src/assets/images/nacre_hero_editorial_1789199546846.jpg'
+      '/assets/images/nacre_hero_editorial_1789199546846.jpg'
     ],
     badges: ['Save ₹648', 'Luxury Gift Box Included', 'Bundle & Save'],
     universe: 'summer-i-turned-pretty',

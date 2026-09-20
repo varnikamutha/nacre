@@ -34,7 +34,7 @@ const ARTICLES: Article[] = [
     title: '5 Pieces Emily Cooper Would Wear to a Rooftop in Saint-Germain',
     category: 'Pop-Culture Edit',
     readTime: '3 min read',
-    image: '/src/assets/images/universe_emily_paris_1789199564030.jpg',
+    image: '/assets/images/universe_emily_paris_1789199570293.jpg',
     excerpt: 'Maximalist French charm meets everyday anti-tarnish ease. How to master bold gold collars and whimsical motifs.',
     content: [
       'Emily Cooper’s wardrobe has never adhered to quiet minimalism. Her style philosophy is unabashed optimism, saturated hues, and jewellery that sparks conversation across a café table.',

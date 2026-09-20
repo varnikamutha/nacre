@@ -118,7 +118,7 @@ export const OurCraft: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="relative rounded-2xl overflow-hidden border border-[#C9A461]/30 shadow-2xl aspect-[4/3] bg-[#1A233A]">
               <img
-                src="/src/assets/images/craft_waterproof_1789199587425.jpg"
+                src="/assets/images/craft_waterproof_1789199605933.jpg"
                 alt="Nacre waterproof anti tarnish jewellery tested under water"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"

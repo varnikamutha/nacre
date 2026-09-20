@@ -7,7 +7,7 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     tagline: 'Parisian chic, bold croissants & main-character layers',
     aesthetic: 'Warm gold + cream & bold cafe terraces',
     accentColor: '#C9A461',
-    heroImage: '/src/assets/images/universe_emily_paris_1789199570293.jpg',
+    heroImage: '/assets/images/universe_emily_paris_1789199570293.jpg',
     quote: '"The kind of layered gold that turns a routine espresso run on Boulevard Saint-Germain into a cinematic montage."',
     signaturePieces: ['The Jardin Tulip Enamel Medallion', 'The Bellini Oval Link Bracelet', 'The Knot of Monaco Crossover Bangle'],
     editorialNote: 'Parisian layering essentials: French oval link paperclip chains, hand-poured botanical enamel medallions, and architectural crossover cuffs.'
@@ -18,7 +18,7 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     tagline: 'Salt-air mornings, ocean breeze & forever bracelets',
     aesthetic: 'Soft peach, seafoam & luminous pearls',
     accentColor: '#C98B7A',
-    heroImage: '/src/assets/images/universe_summer_pretty_1789199587798.jpg',
+    heroImage: '/assets/images/universe_summer_pretty_1789199587798.jpg',
     quote: '"Salt-air mornings. Borrowed oversized hoodies. The kind of summer you replay for years. For the girl who believes in first loves and forever bracelets."',
     signaturePieces: ['The Endless Knot Shimmer Collar', 'The Riviera Seed Pearl Strand', 'The Puffed Heart Satellite Necklace'],
     editorialNote: 'Conrad’s infinity symbol re-imagined into liquid gold, delicate freshwater seed pearls, and ocean-proof anti-tarnish bands that never leave your skin.'

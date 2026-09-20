@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onShopClick, onUniverseClick }) => {
       {/* Background with Generated Editorial Image and Mood Lighting */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/nacre_hero_editorial_1789199546846.jpg"
+          src="/assets/images/nacre_hero_editorial_1789199546846.jpg"
           alt="Nacre 18k gold demi-fine jewellery campaign"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity filter brightness-110"

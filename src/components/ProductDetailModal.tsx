@@ -93,6 +93,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 src={product.images[selectedImageIdx] || product.images[0]}
                 alt={product.name}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.fallbackTried && target.src.includes('/assets/images/')) {
+                    target.dataset.fallbackTried = 'true';
+                    target.src = target.src.replace('/assets/images/', '/src/assets/images/');
+                  }
+                }}
                 className="w-full h-full object-cover transition-all duration-300 select-none"
               />
 

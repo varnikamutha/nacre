@@ -10,37 +10,37 @@ const CATEGORIES: { id: CategoryType | 'all' | 'under-999'; label: string; image
   {
     id: 'all',
     label: 'All Pieces',
-    image: '/src/assets/images/crossover_knot_bangle_1789217703206.jpg',
+    image: '/assets/images/crossover_knot_bangle_1789217703206.jpg',
     count: '29 Styles'
   },
   {
     id: 'bracelets',
     label: 'Bracelets',
-    image: '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
+    image: '/assets/images/twisted_gold_bangle_1789217246681.jpg',
     count: 'Pearls & Bangles'
   },
   {
     id: 'rings',
     label: 'Rings',
-    image: '/src/assets/images/twist_silk_ring_1789217753853.jpg',
+    image: '/assets/images/twist_silk_ring_1789217753853.jpg',
     count: 'Twists & Vines'
   },
   {
     id: 'earrings',
     label: 'Earrings',
-    image: '/src/assets/images/pave_huggie_velvet_1789217215432.jpg',
+    image: '/assets/images/pave_huggie_velvet_1789217215432.jpg',
     count: 'Huggies & Drops'
   },
   {
     id: 'necklaces',
     label: 'Neck Pieces',
-    image: '/src/assets/images/swan_crystal_pendant_1789217305759.jpg',
+    image: '/assets/images/swan_crystal_pendant_1789217305759.jpg',
     count: 'Pendants & Collars'
   },
   {
     id: 'under-999',
     label: 'Under ₹999',
-    image: '/src/assets/images/heart_drop_earrings_1789217233020.jpg',
+    image: '/assets/images/heart_drop_earrings_1789217233020.jpg',
     count: 'Best Value'
   }
 ];
