@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Heart, Star, ShieldCheck, Droplets, Sparkles, ChevronDown, ChevronUp, ShoppingBag, Ruler, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Heart, Star, ShieldCheck, Droplets, Sparkles, ChevronDown, ChevronUp, ShoppingBag, Ruler, Check, ChevronLeft, ChevronRight, Layers } from 'lucide-react';
 import { Product, UniverseId } from '../types';
 import { SizeGuideModal } from './SizeGuideModal';
 import { PRODUCTS } from '../data/products';
@@ -27,18 +27,35 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onSelectProduct,
   onSelectUniverse
 }) => {
-  if (!isOpen || !product) return null;
-
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
-  const [selectedSize, setSelectedSize] = useState<string>(
-    product.sizes ? product.sizes[1] || product.sizes[0] : 'Standard'
-  );
+  const [selectedSize, setSelectedSize] = useState<string>('Standard');
   const [quantity, setQuantity] = useState(1);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [addedAnimation, setAddedAnimation] = useState(false);
-
-  // Accordion open states
   const [openAccordion, setOpenAccordion] = useState<'desc' | 'materials' | 'shipping' | null>('desc');
+
+  // Reset to first image and size whenever product changes
+  useEffect(() => {
+    setSelectedImageIdx(0);
+    setQuantity(1);
+    if (product?.sizes && product.sizes.length > 0) {
+      setSelectedSize(product.sizes[1] || product.sizes[0]);
+    } else {
+      setSelectedSize('Standard');
+    }
+  }, [product?.id]);
+
+  if (!isOpen || !product) return null;
+
+  const handleNextImage = () => {
+    if (!product.images || product.images.length <= 1) return;
+    setSelectedImageIdx((prev) => (prev + 1) % product.images.length);
+  };
+
+  const handlePrevImage = () => {
+    if (!product.images || product.images.length <= 1) return;
+    setSelectedImageIdx((prev) => (prev - 1 + product.images.length) % product.images.length);
+  };
 
   const handleAdd = () => {
     onAddToCart(product, quantity, selectedSize);
@@ -71,40 +88,89 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Left: Image Gallery */}
           <div className="w-full md:w-1/2 p-4 sm:p-6 flex flex-col bg-[#EDE7DD]/40 border-r border-[#E2DDD2]">
             {/* Main Stage Image */}
-            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#ECE7DE] shadow-inner">
+            <div className="group/stage relative aspect-square w-full rounded-xl overflow-hidden bg-[#ECE7DE] shadow-inner">
               <img
                 src={product.images[selectedImageIdx] || product.images[0]}
                 alt={product.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-all duration-300"
+                className="w-full h-full object-cover transition-all duration-300 select-none"
               />
+
+              {/* Prev / Next Arrows for Multi-Image Scrolling */}
+              {product.images.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrevImage();
+                    }}
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#1A1F2B] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
+                    aria-label="Previous product image"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNextImage();
+                    }}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#1A1F2B] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
+                    aria-label="Next product image"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </>
+              )}
+
+              {/* View Indicator Pill */}
+              {product.images.length > 1 && (
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0E1420]/80 backdrop-blur-sm text-[10px] uppercase tracking-wider font-semibold text-white flex items-center gap-1.5">
+                  <Layers size={12} className="text-[#C9A461]" />
+                  <span>
+                    {selectedImageIdx === 0
+                      ? 'Photo 1/2 · Main Piece'
+                      : 'Photo 2/2 · On-Screen Reference'}
+                  </span>
+                </div>
+              )}
+
               {/* Reference Pill */}
               {product.referenceImageName && (
-                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#0E1420]/80 backdrop-blur-sm text-[10px] uppercase tracking-wider font-semibold text-[#C9A461]">
+                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#0E1420]/80 backdrop-blur-sm text-[10px] uppercase tracking-wider font-semibold text-[#C9A461] max-w-[90%] truncate">
                   Ref: {product.referenceImageName}
                 </div>
               )}
             </div>
 
-            {/* Thumbnail Strip */}
+            {/* Thumbnail Strip with Distinct Labels */}
             {product.images.length > 1 && (
               <div className="flex items-center gap-3 mt-4 overflow-x-auto pb-1">
                 {product.images.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedImageIdx(idx)}
-                    className={`w-16 h-16 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
+                    className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border-2 transition-all bg-white/60 ${
                       selectedImageIdx === idx
-                        ? 'border-[#A63A32] ring-2 ring-[#A63A32]/30 scale-105'
-                        : 'border-transparent opacity-70 hover:opacity-100'
+                        ? 'border-[#A63A32] ring-2 ring-[#A63A32]/30 bg-white shadow-sm'
+                        : 'border-transparent opacity-75 hover:opacity-100'
                     }`}
                   >
-                    <img
-                      src={img}
-                      alt={`${product.name} angle ${idx + 1}`}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-10 h-10 rounded overflow-hidden shrink-0">
+                      <img
+                        src={img}
+                        alt={`${product.name} thumbnail ${idx + 1}`}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[11px] font-semibold text-[#1A1F2B] whitespace-nowrap">
+                        {idx === 0 ? '1. Main View' : '2. On-Screen'}
+                      </p>
+                      <p className="text-[9px] text-[#1A1F2B]/60 uppercase tracking-wider whitespace-nowrap">
+                        {idx === 0 ? 'Studio Shot' : 'Emily in Paris'}
+                      </p>
+                    </div>
                   </button>
                 ))}
               </div>

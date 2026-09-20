@@ -52,7 +52,7 @@ export const ShopTheUniverse: React.FC<ShopTheUniverseProps> = ({
         </div>
 
         {/* Universe Poster Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {UNIVERSE_EDITIONS.map((edition) => {
             const isSelected = activeUniverse === edition.id;
 

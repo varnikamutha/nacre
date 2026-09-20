@@ -11,7 +11,7 @@ const CATEGORIES: { id: CategoryType | 'all' | 'under-999'; label: string; image
     id: 'all',
     label: 'All Pieces',
     image: '/src/assets/images/crossover_knot_bangle_1789217703206.jpg',
-    count: '26 Styles'
+    count: '29 Styles'
   },
   {
     id: 'bracelets',

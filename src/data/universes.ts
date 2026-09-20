@@ -9,8 +9,8 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     accentColor: '#C9A461',
     heroImage: '/src/assets/images/universe_emily_paris_1789199570293.jpg',
     quote: '"The kind of layered gold that turns a routine espresso run on Boulevard Saint-Germain into a cinematic montage."',
-    signaturePieces: ['The Bellini Oval Link Bracelet', 'The Jardin Tulip Enamel Medallion', 'The Pavé Radiance Huggies'],
-    editorialNote: 'Think chunky French hoops, textured link bracelets, and botanical enamel charms. Bonjour, but make it effortlessly yours.'
+    signaturePieces: ['The Jardin Tulip Enamel Medallion', 'The Bellini Oval Link Bracelet', 'The Knot of Monaco Crossover Bangle'],
+    editorialNote: 'Parisian layering essentials: French oval link paperclip chains, hand-poured botanical enamel medallions, and architectural crossover cuffs.'
   },
   {
     id: 'summer-i-turned-pretty',
@@ -20,8 +20,8 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     accentColor: '#C98B7A',
     heroImage: '/src/assets/images/universe_summer_pretty_1789199587798.jpg',
     quote: '"Salt-air mornings. Borrowed oversized hoodies. The kind of summer you replay for years. For the girl who believes in first loves and forever bracelets."',
-    signaturePieces: ['The Riviera Pearl Strand', 'The Puffed Heart Satellite Necklace', 'The Duo Horizon Huggies'],
-    editorialNote: 'Delicate freshwater seed pearls, dainty satellite chains, and ocean-proof anti-tarnish bands that never leave your wrist.'
+    signaturePieces: ['The Endless Knot Shimmer Collar', 'The Riviera Seed Pearl Strand', 'The Puffed Heart Satellite Necklace'],
+    editorialNote: 'Conrad’s infinity symbol re-imagined into liquid gold, delicate freshwater seed pearls, and ocean-proof anti-tarnish bands that never leave your skin.'
   },
   {
     id: 'to-all-the-boys',
@@ -31,8 +31,8 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     accentColor: '#A63A32',
     heroImage: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80',
     quote: '"Hidden love letters tucked into vintage hat boxes, diner strawberry milkshakes, and dainty heart huggies that whisper sweet secrets."',
-    signaturePieces: ['The Dual Aurora Heart Drops', 'The Cascading Heart Rain Huggies', 'The Endless Knot Collar'],
-    editorialNote: 'Layered heart motifs, faceted teardrop cubic zirconia, and endless ribbon knots. Romantic, cozy, and forever wearable.'
+    signaturePieces: ['The Dual Aurora Heart Drops', 'The Lilac Blossom Cluster Ring', 'The Ethereal Marquise Droplet Pendant'],
+    editorialNote: 'Layered heart motifs, faceted teardrop cubic zirconia, and pastel blossom clusters. Romantic, cozy, and forever wearable.'
   },
   {
     id: 'bridgerton',
@@ -44,16 +44,5 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     quote: '"My dear gentle reader, nothing garners the gaze of the ballroom quite like a swan carved in rose gold and shimmering celestial foliage."',
     signaturePieces: ['The Royal Swan Pavé Pendant', 'The Midnight Celestial Foliage Ring', 'The Starlight Twisted Pavé Bangle'],
     editorialNote: 'Sculpted pavé swans cradling blush marquise gems, organic botanical vine bands with brilliant blue sapphires, and royal tiara sparkle.'
-  },
-  {
-    id: 'gossip-girl',
-    title: 'Gossip Girl Edit',
-    tagline: 'Upper East Side confidence, Met steps & architectural gold',
-    aesthetic: 'High-contrast black navy, sharp tailored gold & signet glamour',
-    accentColor: '#D4AF37',
-    heroImage: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80',
-    quote: '"Spotted on the Met steps: headbands, crisp blazers, and architectural gold bangles that command every boardroom and cocktail hour. You know you love me. XOXO."',
-    signaturePieces: ['The Knot of Monaco Crossover Bangle', 'The Eternal Twist Ring', 'The Atelier Floral Vine Ring'],
-    editorialNote: 'Architectural crossover bangles, eternity ribbons, and high-shine statement pieces crafted to turn heads from Fifth Avenue to Brooklyn.'
   }
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Star, ShoppingBag, Eye } from 'lucide-react';
+import { Heart, Star, ShoppingBag, Eye, Layers } from 'lucide-react';
 import { Product } from '../types';
 
 interface ProductCardProps {
@@ -39,6 +39,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className={`px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold rounded-full shadow-sm ${
                 badge.includes('Under') || badge.includes('HOT')
                   ? 'bg-[#A63A32] text-white'
+                  : badge.includes('Emily in Paris')
+                  ? 'bg-[#1A233A] text-[#C9A461] border border-[#C9A461]/40'
                   : badge.includes('Bestseller')
                   ? 'bg-[#0E1420] text-[#C9A461] border border-[#C9A461]/40'
                   : 'bg-[#F7F3EC]/90 backdrop-blur-sm text-[#1A1F2B] border border-[#C9A461]/30'
@@ -48,6 +50,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           ))}
         </div>
+
+        {/* Multi-view pill indicator on bottom right */}
+        {product.images.length > 1 && (
+          <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm text-[9px] uppercase tracking-wider font-semibold text-white/95 flex items-center gap-1 shadow-sm group-hover:bg-[#A63A32] transition-colors">
+            <Layers size={10} className="text-[#C9A461]" />
+            <span>2 Views</span>
+          </div>
+        )}
 
         {/* Wishlist Button */}
         <button

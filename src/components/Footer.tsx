@@ -198,17 +198,6 @@ export const Footer: React.FC<FooterProps> = ({
                   The Bridgerton Edit
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => {
-                    onSelectUniverse('gossip-girl');
-                    onNavigateSection('shop-section');
-                  }}
-                  className="hover:text-[#C9A461] transition-colors"
-                >
-                  Gossip Girl (Uptown)
-                </button>
-              </li>
             </ul>
           </div>
 

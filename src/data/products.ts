@@ -15,8 +15,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 142,
     images: [
-      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
-      'https://images.unsplash.com/photo-1611591475883-997214757351?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pearl_strand_bracelet_1789910930879.jpg'
     ],
     badges: ['Anti-Tarnish', 'Real Seed Pearls', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -41,8 +40,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 98,
     images: [
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
-      '/src/assets/images/paperclip_bracelet_1789217343899.jpg'
+      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
     ],
     badges: ['18K Gold Plated', 'Waterproof', 'Micro-Pavé'],
     universe: 'bridgerton',
@@ -67,8 +65,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 76,
     images: [
-      '/src/assets/images/paperclip_bracelet_1789217343899.jpg',
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
+      '/src/assets/images/paperclip_bracelet_1789217343899.jpg'
     ],
     badges: ['Anti-Tarnish', '18K Gold Plated', 'Editor’s Pick'],
     universe: 'emily-in-paris',
@@ -93,20 +90,19 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 114,
     images: [
-      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg',
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
+      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg'
     ],
     badges: ['Anti-Tarnish', 'Waterproof', 'Signature Tier'],
-    universe: 'gossip-girl',
+    universe: 'emily-in-paris',
     tier: 'signature',
     referenceImageName: 'gbf.JPG (Overlapping crossover crystal knot cuff)',
-    description: 'Clean architectural lines meet Upper East Side luxury. A polished gold cuff tapers into a double band gathered at the crest with a sparkling pavé crystal collar ring that stays firmly in place without snagging.',
+    description: 'Clean architectural lines meet French Riviera luxury. A polished gold cuff tapers into a double band gathered at the crest with a sparkling pavé crystal collar ring that stays firmly in place without snagging.',
     materials: '18K Yellow Gold PVD over vacuum-tempered steel, encrusted with high-clarity pavé CZ.',
     dimensions: 'Oval contour 60mm × 50mm inner circumference with spring tension hinge.',
     isBestSeller: true,
     isNewArrival: false,
     isUnder999: false,
-    stylingNote: 'Pair with tailored blazers, dark manicures, and iced coffees on the Met steps.'
+    stylingNote: 'Pair with tailored blazers, dark manicures, and an espresso on the Boulevard Saint-Germain.'
   },
   {
     id: 'bracelet-croissant-dome',
@@ -119,8 +115,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 89,
     images: [
-      '/src/assets/images/croissant_bangle_1789218346424.jpg',
-      '/src/assets/images/crossover_knot_bangle_1789217703206.jpg'
+      '/src/assets/images/croissant_bangle_1789218346424.jpg'
     ],
     badges: ['Anti-Tarnish', 'French Riveted', 'Chic Minimal'],
     universe: 'emily-in-paris',
@@ -145,11 +140,10 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 153,
     images: [
-      '/src/assets/images/tennis_bracelet_1789218435495.jpg',
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg'
+      '/src/assets/images/tennis_bracelet_1789218435495.jpg'
     ],
     badges: ['Anti-Tarnish', 'Everyday Sparkle', 'Bestseller'],
-    universe: 'gossip-girl',
+    universe: 'bridgerton',
     tier: 'everyday',
     referenceImageName: 'Minimalist line crystal tennis bracelet',
     description: 'The elusive everyday tennis bracelet that feels completely weightless and never flips. Individually bezel-set round brilliant crystals give constant, liquid twinkle from day to night.',
@@ -175,11 +169,10 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 210,
     images: [
-      '/src/assets/images/twist_silk_ring_1789217753853.jpg',
-      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/twist_silk_ring_1789217753853.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Stacker'],
-    universe: 'gossip-girl',
+    universe: 'summer-i-turned-pretty',
     tier: 'everyday',
     referenceImageName: 'IMG_1188.JPG (Eternity twist pave ring on ivory silk)',
     description: 'Two fluid ribbons intertwine in an unbroken infinity braid — one mirror-polished 18k gold strand, the other lined with delicate pavé crystals that shimmer softly with every gesture.',
@@ -201,8 +194,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 88,
     images: [
-      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg',
-      'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg'
     ],
     badges: ['Demi-Fine', 'Anti-Tarnish', 'Pastel Gemstones'],
     universe: 'to-all-the-boys',
@@ -227,8 +219,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 67,
     images: [
-      '/src/assets/images/blossom_ring_1789217769956.jpg',
-      '/src/assets/images/gemstone_vine_ring_1789217278517.jpg'
+      '/src/assets/images/blossom_ring_1789217769956.jpg'
     ],
     badges: ['Anti-Tarnish', 'Botanical Sculpted', '18K Gold'],
     universe: 'emily-in-paris',
@@ -253,8 +244,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 132,
     images: [
-      '/src/assets/images/sapphire_ring_1789217784742.jpg',
-      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/sapphire_ring_1789217784742.jpg'
     ],
     badges: ['Regency Collection', 'Deep Sapphire', 'Anti-Tarnish'],
     universe: 'bridgerton',
@@ -279,11 +269,10 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 118,
     images: [
-      '/src/assets/images/wishbone_ring_1789218391745.jpg',
-      '/src/assets/images/twist_silk_ring_1789217753853.jpg'
+      '/src/assets/images/wishbone_ring_1789218391745.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Duo Stacker'],
-    universe: 'gossip-girl',
+    universe: 'emily-in-paris',
     tier: 'everyday',
     referenceImageName: 'Wishbone chevron micro-pave ring stack',
     description: 'A match made in heaven. A sharp geometric wishbone arc lined with glittering micro-pavé crystals creates an optical focal point that elongates your fingers effortlessly.',
@@ -305,8 +294,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 77,
     images: [
-      '/src/assets/images/solitaire_ring_1789218497424.jpg',
-      '/src/assets/images/sapphire_ring_1789217784742.jpg'
+      '/src/assets/images/solitaire_ring_1789218497424.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Signet'],
     universe: 'summer-i-turned-pretty',
@@ -322,7 +310,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // EARRINGS (6 curated styles)
+  // EARRINGS
   // ==========================================
   {
     id: 'earrings-pave-radiance-huggies',
@@ -335,8 +323,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 320,
     images: [
-      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg',
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Daily Essential', 'Hypoallergenic'],
     universe: 'emily-in-paris',
@@ -361,8 +348,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 84,
     images: [
-      '/src/assets/images/heart_drop_earrings_1789217233020.jpg',
-      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
+      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
     ],
     badges: ['Anti-Tarnish', 'Faceted Heart Gem', 'New In'],
     universe: 'to-all-the-boys',
@@ -387,8 +373,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 71,
     images: [
-      '/src/assets/images/cascading_chains_1789217722327.jpg',
-      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
+      '/src/assets/images/cascading_chains_1789217722327.jpg'
     ],
     badges: ['Statement Drop', 'Anti-Tarnish', 'Waterproof'],
     universe: 'to-all-the-boys',
@@ -413,8 +398,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 165,
     images: [
-      '/src/assets/images/split_huggies_1789217737854.jpg',
-      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg'
+      '/src/assets/images/split_huggies_1789217737854.jpg'
     ],
     badges: ['Anti-Tarnish', 'Architectural Dual Band', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -439,8 +423,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 112,
     images: [
-      '/src/assets/images/pearl_drop_earrings_1789218367457.jpg',
-      '/src/assets/images/heart_drop_earrings_1789217233020.jpg'
+      '/src/assets/images/pearl_drop_earrings_1789218367457.jpg'
     ],
     badges: ['Real Cultured Pearls', 'Anti-Tarnish', 'Bestseller'],
     universe: 'summer-i-turned-pretty',
@@ -465,8 +448,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 94,
     images: [
-      '/src/assets/images/heart_stud_earrings_1789218456085.jpg',
-      '/src/assets/images/split_huggies_1789217737854.jpg'
+      '/src/assets/images/heart_stud_earrings_1789218456085.jpg'
     ],
     badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Studs'],
     universe: 'to-all-the-boys',
@@ -482,7 +464,7 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // NECK PIECES / NECKLACES (6 curated styles)
+  // NECK PIECES / NECKLACES
   // ==========================================
   {
     id: 'necklace-royal-swan-pendant',
@@ -495,8 +477,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 188,
     images: [
-      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg',
-      'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg'
     ],
     badges: ['Regency Fine Tier', 'Blush Pink Gem', 'Anti-Tarnish'],
     universe: 'bridgerton',
@@ -521,11 +502,10 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 204,
     images: [
-      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/knot_collar_necklace_1789910944582.jpg'
     ],
-    badges: ['Under ₹999', 'Anti-Tarnish', 'Minimalist Stacker'],
-    universe: 'to-all-the-boys',
+    badges: ['Under ₹999', 'Anti-Tarnish', 'Infinity Knot', 'Cousins Beach Edit'],
+    universe: 'summer-i-turned-pretty',
     tier: 'everyday',
     referenceImageName: 'n.JPG (Infinity collar necklace on ivory)',
     description: 'Simplicity at its most powerful. A seamless, high-polished figure-8 infinity knot that rests flat against the collarbone, threaded seamlessly into an ultra-fine link chain that catches light with every breath.',
@@ -547,8 +527,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 95,
     images: [
-      '/src/assets/images/universe_emily_paris_1789199570293.jpg',
-      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
+      '/src/assets/images/tulip_enamel_neck_1789910959953.jpg'
     ],
     badges: ['Hand-Poured Enamel', 'Snake Chain', 'Anti-Tarnish'],
     universe: 'emily-in-paris',
@@ -573,8 +552,7 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 147,
     images: [
-      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg',
-      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80'
+      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
     ],
     badges: ['Anti-Tarnish', '3D Sculpted', 'Most Saved on Pinterest'],
     universe: 'summer-i-turned-pretty',
@@ -599,11 +577,10 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 168,
     images: [
-      '/src/assets/images/snake_chain_neck_1789218313736.jpg',
-      '/src/assets/images/puffed_heart_necklace_1789217324035.jpg'
+      '/src/assets/images/snake_chain_neck_1789218313736.jpg'
     ],
     badges: ['Anti-Tarnish', 'Liquid Gold', 'Bestseller'],
-    universe: 'gossip-girl',
+    universe: 'emily-in-paris',
     tier: 'signature',
     referenceImageName: 'Liquid herringbone flat chain on limestone',
     description: 'The definitive foundation piece. Highly polished flat-woven chevron links fit together seamlessly to reflect light like a ribbon of liquid gold across your clavicle without pinching or kinking.',
@@ -625,8 +602,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 92,
     images: [
-      '/src/assets/images/droplet_necklace_1789218417081.jpg',
-      '/src/assets/images/swan_crystal_pendant_1789217305759.jpg'
+      '/src/assets/images/droplet_necklace_1789218417081.jpg'
     ],
     badges: ['Anti-Tarnish', 'Floating Crystal', 'New In'],
     universe: 'to-all-the-boys',
@@ -655,8 +631,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviewCount: 52,
     images: [
-      '/src/assets/images/pearl_gold_necklace_1789217264739.jpg',
-      '/src/assets/images/universe_summer_pretty_1789199587798.jpg'
+      '/src/assets/images/pearl_anklet_beach_1789910973597.jpg'
     ],
     badges: ['Under ₹999', 'Beach-Proof', 'Anti-Tarnish'],
     universe: 'summer-i-turned-pretty',
@@ -681,8 +656,6 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 63,
     images: [
-      '/src/assets/images/pave_huggie_velvet_1789217215432.jpg',
-      '/src/assets/images/twisted_gold_bangle_1789217246681.jpg',
       '/src/assets/images/nacre_hero_editorial_1789199546846.jpg'
     ],
     badges: ['Save ₹648', 'Luxury Gift Box Included', 'Bundle & Save'],
@@ -707,8 +680,7 @@ export const REVIEWS: { [key: string]: string[] } = {
     '“The crossover design is so unique. Feels so solid and luxury on the wrist without being heavy.” — Tanya V., Mumbai'
   ],
   'earrings-pave-radiance-huggies': [
-    '“The velvet display shot is what made me buy this! The wide huggies are so sparkly and comfortable to sleep in. Zero irritation on my sensitive ears.” — Shreya B., Bangalore',
-    '“Literally obsessed. Never taking these hoops off.” — Natasha T., Mumbai'
+    '“The velvet display shot is what made me buy this! The wide huggies are so sparkly and comfortable to sleep in. Zero irritation on my sensitive ears.” — Shreya B., Bangalore'
   ],
   'necklace-royal-swan-pendant': [
     '“My boyfriend gave this to me for our anniversary. The blush pink stone in the swan is SO romantic and expensive-looking. Comes in gorgeous packaging.” — Pooja S., Bengaluru'

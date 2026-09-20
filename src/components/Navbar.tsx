@@ -289,10 +289,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Search size={19} />
             </button>
 
-            {/* Currency Pill */}
-            <span className="hidden md:inline-flex items-center px-2 py-0.5 text-[11px] font-medium tracking-wide bg-[#1A233A] text-[#C9A461] rounded-full border border-[#C9A461]/30">
-              ₹ INR
-            </span>
 
             {/* Wishlist Trigger */}
             <button

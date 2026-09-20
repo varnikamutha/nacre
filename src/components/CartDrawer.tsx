@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ShoppingBag, Trash2, Gift, ArrowRight, CheckCircle2, ShieldCheck, CreditCard, Sparkles } from 'lucide-react';
+import { X, ShoppingBag, Trash2, Gift, ArrowRight, CheckCircle2, ShieldCheck, CreditCard, Sparkles, Mail } from 'lucide-react';
 import { CartItem } from '../types';
 
 interface CartDrawerProps {
@@ -21,7 +21,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   onClearCart
 }) => {
-  const [includeGiftBox, setIncludeGiftBox] = useState(false);
+  const [includeGiftWrapping, setIncludeGiftWrapping] = useState(false);
+  const [includeGiftMessage, setIncludeGiftMessage] = useState(false);
+  const [giftRecipient, setGiftRecipient] = useState('');
+  const [giftSender, setGiftSender] = useState('');
+  const [giftNote, setGiftNote] = useState('');
+
   const [promoCode, setPromoCode] = useState('');
   const [discountPercent, setDiscountPercent] = useState(0);
   const [promoApplied, setPromoApplied] = useState(false);
@@ -44,12 +49,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   if (!isOpen) return null;
 
   const rawSubtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  const giftBoxFee = includeGiftBox ? 99 : 0;
+  const giftWrappingFee = includeGiftWrapping ? 99 : 0;
   const discountAmount = Math.round((rawSubtotal * discountPercent) / 100);
   const subtotalAfterDiscount = rawSubtotal - discountAmount;
   const isFreeShipping = subtotalAfterDiscount >= FREE_SHIPPING_THRESHOLD || rawSubtotal === 0;
   const shippingFee = isFreeShipping ? 0 : 99;
-  const grandTotal = subtotalAfterDiscount + giftBoxFee + (rawSubtotal > 0 ? shippingFee : 0);
+  const grandTotal = subtotalAfterDiscount + giftWrappingFee + (rawSubtotal > 0 ? shippingFee : 0);
   const amountNeededForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotalAfterDiscount);
   const progressPercent = Math.min(100, (subtotalAfterDiscount / FREE_SHIPPING_THRESHOLD) * 100);
 
@@ -132,7 +137,32 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="p-3 bg-[#1A233A] rounded-xl border border-[#2A344A] inline-block text-xs font-mono text-[#C9A461]">
                 Tracking ID: {orderId}
               </div>
-              <div className="pt-6">
+
+              {(includeGiftWrapping || includeGiftMessage) && (
+                <div className="p-4 bg-[#141C2B] rounded-xl border border-[#C9A461]/40 text-left space-y-2.5 max-w-sm mx-auto">
+                  <div className="flex items-center gap-2 text-xs font-serif font-bold text-[#C9A461]">
+                    <Gift size={15} />
+                    <span>Gifting Presentation Included</span>
+                  </div>
+                  {includeGiftWrapping && (
+                    <p className="text-[11px] text-[#EDE7DD]/80 flex items-center gap-1.5">
+                      <span className="text-emerald-400">✓</span> Midnight navy velvet keepsake box with hand-tied gold ribbon
+                    </p>
+                  )}
+                  {includeGiftMessage && (
+                    <div className="pt-2 border-t border-[#2A344A]/80 text-xs">
+                      <div className="text-[10px] uppercase font-sans tracking-widest text-[#C9A461] mb-1">
+                        Handwritten Note Card {giftRecipient ? `• To: ${giftRecipient}` : ''} {giftSender ? `• From: ${giftSender}` : ''}
+                      </div>
+                      <p className="font-serif italic text-[#EDE7DD]/90 text-xs bg-[#0E1420] p-2.5 rounded-lg border border-[#2A344A]">
+                        "{giftNote || 'With warm love and blessings.'}"
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="pt-4">
                 <button
                   onClick={() => {
                     setOrderComplete(false);
@@ -263,6 +293,26 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </button>
                 </div>
               </div>
+
+              {/* Gifting Checkout Notice if selected */}
+              {(includeGiftWrapping || includeGiftMessage) && (
+                <div className="p-3 rounded-lg bg-[#141C2B] border border-[#C9A461]/30 text-xs space-y-1">
+                  <div className="flex items-center gap-1.5 text-[#C9A461] font-medium text-[11px]">
+                    <Gift size={13} />
+                    <span>Gifting Order Prepared</span>
+                  </div>
+                  {includeGiftWrapping && (
+                    <p className="text-[10px] text-[#EDE7DD]/70">
+                      • Midnight navy keepsake velvet box with gold ribbon (+₹99)
+                    </p>
+                  )}
+                  {includeGiftMessage && (
+                    <p className="text-[10px] text-[#EDE7DD]/70">
+                      • Handwritten ivory gift note {giftRecipient ? `to ${giftRecipient}` : ''} {giftSender ? `from ${giftSender}` : ''}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           ) : cart.length === 0 ? (
             /* Empty Cart */
@@ -339,31 +389,162 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 ))}
               </div>
 
-              {/* Gift Box Upsell (Section 6.5) */}
-              <div
-                onClick={() => setIncludeGiftBox(!includeGiftBox)}
-                className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
-                  includeGiftBox
-                    ? 'border-[#C9A461] bg-[#1A233A]'
-                    : 'border-[#2A344A] bg-[#141C2B] hover:border-[#C9A461]/40'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-lg bg-[#0E1420] text-[#C9A461]">
-                    <Gift size={16} />
-                  </div>
-                  <div>
-                    <h5 className="text-xs font-semibold text-[#EDE7DD]">
-                      Add Midnight Navy Keepsake Gift Box
+              {/* Gifting Suite: Gift Wrapping & Gift Message Options */}
+              <div id="gifting-options-container" className="p-4 rounded-xl border border-[#2A344A] bg-[#141C2B] space-y-3.5">
+                <div className="flex items-center justify-between pb-2.5 border-b border-[#2A344A]">
+                  <div className="flex items-center gap-2">
+                    <Gift size={16} className="text-[#C9A461]" />
+                    <h5 className="text-xs font-semibold text-[#EDE7DD] tracking-wide">
+                      Purchasing As A Gift?
                     </h5>
-                    <p className="text-[10px] text-[#EDE7DD]/60">
-                      Includes gold ribbon + blank wax-sealed letter
+                  </div>
+                  <span className="text-[10px] text-[#C9A461] tracking-wider uppercase font-mono">
+                    Gifting Suite
+                  </span>
+                </div>
+
+                {/* Option 1: Gift Wrapping Checkbox */}
+                <label
+                  htmlFor="gift-wrapping-checkbox"
+                  className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
+                    includeGiftWrapping
+                      ? 'border-[#C9A461] bg-[#1A233A]'
+                      : 'border-[#2A344A] bg-[#0E1420]/70 hover:border-[#C9A461]/40'
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    id="gift-wrapping-checkbox"
+                    checked={includeGiftWrapping}
+                    onChange={(e) => setIncludeGiftWrapping(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 rounded border-[#2A344A] accent-[#C9A461] cursor-pointer"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-[#EDE7DD]">
+                        Add Signature Gift Wrapping
+                      </span>
+                      <span className="text-xs font-serif font-bold text-[#C9A461]">
+                        +₹99
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[#EDE7DD]/60 leading-relaxed mt-0.5">
+                      Midnight navy velvet keepsake presentation box tied with gold satin ribbon and archival tissue.
                     </p>
                   </div>
+                </label>
+
+                {/* Option 2: Gift Message Checkbox */}
+                <div className="space-y-2.5">
+                  <label
+                    htmlFor="gift-message-checkbox"
+                    className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
+                      includeGiftMessage
+                        ? 'border-[#C9A461] bg-[#1A233A]'
+                        : 'border-[#2A344A] bg-[#0E1420]/70 hover:border-[#C9A461]/40'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      id="gift-message-checkbox"
+                      checked={includeGiftMessage}
+                      onChange={(e) => setIncludeGiftMessage(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 rounded border-[#2A344A] accent-[#C9A461] cursor-pointer"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-semibold text-[#EDE7DD] flex items-center gap-1.5">
+                          <span>Add Handwritten Gift Message</span>
+                          <Mail size={12} className="text-[#C9A461]" />
+                        </span>
+                        <span className="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/40">
+                          Free
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-[#EDE7DD]/60 leading-relaxed mt-0.5">
+                        Penned with calligraphic ink on textured cotton cardstock and sealed with our gold wax seal.
+                      </p>
+                    </div>
+                  </label>
+
+                  {/* Expandable Gift Note Editor */}
+                  {includeGiftMessage && (
+                    <div className="p-3 bg-[#0E1420] rounded-lg border border-[#C9A461]/40 space-y-2.5 animate-fade-in">
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <label htmlFor="gift-recipient-input" className="block text-[10px] text-[#EDE7DD]/70 mb-1">
+                            To (Recipient)
+                          </label>
+                          <input
+                            type="text"
+                            id="gift-recipient-input"
+                            value={giftRecipient}
+                            onChange={(e) => setGiftRecipient(e.target.value)}
+                            placeholder="e.g., Belly"
+                            className="w-full bg-[#141C2B] border border-[#2A344A] rounded-md px-2.5 py-1.5 text-xs text-white placeholder:text-[#EDE7DD]/30 focus:outline-none focus:border-[#C9A461]"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="gift-sender-input" className="block text-[10px] text-[#EDE7DD]/70 mb-1">
+                            From (Sender)
+                          </label>
+                          <input
+                            type="text"
+                            id="gift-sender-input"
+                            value={giftSender}
+                            onChange={(e) => setGiftSender(e.target.value)}
+                            placeholder="e.g., Conrad"
+                            className="w-full bg-[#141C2B] border border-[#2A344A] rounded-md px-2.5 py-1.5 text-xs text-white placeholder:text-[#EDE7DD]/30 focus:outline-none focus:border-[#C9A461]"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <label htmlFor="gift-message-textarea" className="text-[10px] text-[#EDE7DD]/70">
+                            Personalized Note
+                          </label>
+                          <span className="text-[9px] text-[#EDE7DD]/40 font-mono">
+                            {giftNote.length}/200
+                          </span>
+                        </div>
+                        <textarea
+                          id="gift-message-textarea"
+                          rows={2}
+                          maxLength={200}
+                          value={giftNote}
+                          onChange={(e) => setGiftNote(e.target.value)}
+                          placeholder="Type your heartfelt note to be handwritten..."
+                          className="w-full bg-[#141C2B] border border-[#2A344A] rounded-md p-2 text-xs text-white placeholder:text-[#EDE7DD]/30 focus:outline-none focus:border-[#C9A461] resize-none"
+                        />
+                      </div>
+
+                      {/* Quick Suggestions */}
+                      <div>
+                        <span className="block text-[9px] text-[#EDE7DD]/50 mb-1.5">
+                          Quick message inspirations:
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {[
+                            'Happy Birthday ✨',
+                            'With All My Love 🤍',
+                            'For Someone Special 🌸',
+                            'A Little Magic For You 💫'
+                          ].map((prompt) => (
+                            <button
+                              key={prompt}
+                              type="button"
+                              onClick={() => setGiftNote(prompt)}
+                              className="text-[10px] px-2.5 py-1 rounded-full bg-[#1A233A] hover:bg-[#2A344A] text-[#C9A461] border border-[#C9A461]/30 transition-colors whitespace-nowrap"
+                            >
+                              {prompt}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <span className="text-xs font-serif font-bold text-[#C9A461]">
-                  {includeGiftBox ? '✓ ₹99 Added' : '+₹99'}
-                </span>
               </div>
 
               {/* Promo Code Input */}
@@ -415,10 +596,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </div>
               )}
 
-              {includeGiftBox && (
-                <div className="flex justify-between">
-                  <span>Keepsake Gift Packaging</span>
-                  <span>₹99</span>
+              {includeGiftWrapping && (
+                <div className="flex justify-between text-[#EDE7DD]">
+                  <span>Signature Luxury Gift Wrapping</span>
+                  <span className="text-[#C9A461] font-semibold">₹99</span>
+                </div>
+              )}
+
+              {includeGiftMessage && (
+                <div className="flex justify-between text-[#EDE7DD]">
+                  <span>Handwritten Gift Message Card</span>
+                  <span className="text-emerald-400 font-semibold uppercase text-[11px]">Free</span>
                 </div>
               )}
 

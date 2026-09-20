@@ -373,20 +373,22 @@ export default function App() {
       />
 
       {/* PDP Modal */}
-      <ProductDetailModal
-        product={selectedProduct}
-        isOpen={isPDPModalOpen}
-        onClose={() => setIsPDPModalOpen(false)}
-        onAddToCart={handleAddToCart}
-        onBuyNow={handleBuyNow}
-        onToggleWishlist={handleToggleWishlist}
-        isWishlisted={selectedProduct ? wishlist.some((w) => w.id === selectedProduct.id) : false}
-        onSelectProduct={(p) => setSelectedProduct(p)}
-        onSelectUniverse={(univ) => {
-          setActiveUniverse(univ);
-          handleNavigateSection('shop-section');
-        }}
-      />
+      {isPDPModalOpen && selectedProduct && (
+        <ProductDetailModal
+          product={selectedProduct}
+          isOpen={isPDPModalOpen}
+          onClose={() => setIsPDPModalOpen(false)}
+          onAddToCart={handleAddToCart}
+          onBuyNow={handleBuyNow}
+          onToggleWishlist={handleToggleWishlist}
+          isWishlisted={wishlist.some((w) => w.id === selectedProduct.id)}
+          onSelectProduct={(p) => setSelectedProduct(p)}
+          onSelectUniverse={(univ) => {
+            setActiveUniverse(univ);
+            handleNavigateSection('shop-section');
+          }}
+        />
+      )}
 
       {/* Cart Drawer */}
       <CartDrawer

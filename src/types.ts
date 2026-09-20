@@ -6,8 +6,7 @@ export type UniverseId =
   | 'emily-in-paris'
   | 'summer-i-turned-pretty'
   | 'to-all-the-boys'
-  | 'bridgerton'
-  | 'gossip-girl';
+  | 'bridgerton';
 
 export type ProductTier = 'everyday' | 'signature' | 'fine-edit';
 
