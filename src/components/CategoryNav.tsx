@@ -1,64 +1,71 @@
 import React from 'react';
 import { CategoryType } from '../types';
+import { resolveImageUrl, handleImageError } from '../utils/imageResolver';
 
 interface CategoryNavProps {
   activeCategory: string;
   onSelectCategory: (category: CategoryType | 'all' | 'under-999') => void;
 }
 
-const CATEGORIES: { id: CategoryType | 'all' | 'under-999'; label: string; image: string; count: string }[] = [
+const CATEGORIES: { id: CategoryType | 'all' | 'under-999'; label: string; image: string; count: string; categoryKey: string }[] = [
   {
     id: 'all',
     label: 'All Pieces',
-    image: '/assets/images/crossover_knot_bangle_1789217703206.jpg',
-    count: '29 Styles'
+    image: resolveImageUrl('/assets/images/crossover_knot_bangle_1789217703206.jpg'),
+    count: '26 Styles',
+    categoryKey: 'bracelet'
   },
   {
     id: 'bracelets',
     label: 'Bracelets',
-    image: '/assets/images/twisted_gold_bangle_1789217246681.jpg',
-    count: 'Pearls & Bangles'
+    image: resolveImageUrl('/assets/images/twisted_gold_bangle_1789217246681.jpg'),
+    count: 'Pearls & Bangles',
+    categoryKey: 'bracelet'
   },
   {
     id: 'rings',
     label: 'Rings',
-    image: '/assets/images/twist_silk_ring_1789217753853.jpg',
-    count: 'Twists & Vines'
+    image: resolveImageUrl('/assets/images/twist_silk_ring_1789217753853.jpg'),
+    count: 'Twists & Vines',
+    categoryKey: 'ring'
   },
   {
     id: 'earrings',
     label: 'Earrings',
-    image: '/assets/images/pave_huggie_velvet_1789217215432.jpg',
-    count: 'Huggies & Drops'
+    image: resolveImageUrl('/assets/images/pave_huggie_velvet_1789217215432.jpg'),
+    count: 'Huggies & Drops',
+    categoryKey: 'earrings'
   },
   {
     id: 'necklaces',
     label: 'Neck Pieces',
-    image: '/assets/images/swan_crystal_pendant_1789217305759.jpg',
-    count: 'Pendants & Collars'
+    image: resolveImageUrl('/assets/images/swan_crystal_pendant_1789217305759.jpg'),
+    count: 'Pendants & Collars',
+    categoryKey: 'necklace'
   },
   {
     id: 'under-999',
     label: 'Under ₹999',
-    image: '/assets/images/heart_drop_earrings_1789217233020.jpg',
-    count: 'Best Value'
+    image: resolveImageUrl('/assets/images/heart_drop_earrings_1789217233020.jpg'),
+    count: 'Best Value',
+    categoryKey: 'earrings'
   }
 ];
 
 export const CategoryNav: React.FC<CategoryNavProps> = ({ activeCategory, onSelectCategory }) => {
   return (
-    <div className="w-full bg-[#F7F3EC] py-8 sm:py-10 border-b border-[#E8E2D5]">
+    <div className="w-full bg-[#F7F3EC] py-8 sm:py-10 border-b border-[#E2DDD2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <div>
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#A63A32] font-semibold">
               Curated Capsules
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#1A1F2B] mt-0.5">
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#0E1420] mt-0.5">
               Shop By Category
             </h2>
           </div>
-          <span className="text-xs text-[#1A1F2B]/60 font-sans hidden sm:inline">
+          <span className="text-xs text-[#0E1420]/60 font-sans hidden sm:inline">
             Scroll to discover Pinterest-curated silhouettes
           </span>
         </div>
@@ -85,17 +92,18 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({ activeCategory, onSele
                     src={cat.image}
                     alt={cat.label}
                     referrerPolicy="no-referrer"
+                    onError={(e) => handleImageError(e, cat.categoryKey)}
                     className="w-full h-full object-cover rounded-full filter contrast-105"
                   />
                 </div>
                 <span
                   className={`mt-2.5 text-xs sm:text-sm font-medium tracking-wide transition-colors ${
-                    isSelected ? 'text-[#A63A32] font-semibold' : 'text-[#1A1F2B] group-hover:text-[#A63A32]'
+                    isSelected ? 'text-[#A63A32] font-semibold' : 'text-[#0E1420] group-hover:text-[#A63A32]'
                   }`}
                 >
                   {cat.label}
                 </span>
-                <span className="text-[10px] text-[#1A1F2B]/50 -mt-0.5">
+                <span className="text-[10px] text-[#0E1420]/50 -mt-0.5">
                   {cat.count}
                 </span>
               </button>

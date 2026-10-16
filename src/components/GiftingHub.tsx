@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Gift, Sparkles, Heart, Check, ArrowRight, RotateCcw } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
+import { handleImageError } from '../utils/imageResolver';
 
 interface GiftingHubProps {
   onSelectProduct: (product: Product) => void;
@@ -78,15 +79,15 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hub Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1420] text-[#C9A461] text-xs font-semibold uppercase tracking-[0.2em] mb-3">
-            <Gift size={13} />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE7DD] text-[#0E1420] border border-[#0E1420]/20 text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+            <Gift size={13} className="text-[#A63A32]" />
             <span>The Gifting Atelier</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#1A1F2B] font-light">
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#0E1420] font-light">
             Not sure where to start? <br />
-            <span className="italic font-normal">We'll help you find the one.</span>
+            <span className="italic font-normal text-[#A63A32]">We'll help you find the one.</span>
           </h2>
-          <p className="font-sans text-sm sm:text-base text-[#1A1F2B]/70 mt-3 font-light">
+          <p className="font-sans text-sm sm:text-base text-[#0E1420]/80 mt-3 font-light">
             Whether you’re choosing for a girlfriend, sister, best friend or yourself — our anti-tarnish pieces arrive packaged to make jaws drop.
           </p>
         </div>
@@ -94,13 +95,13 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
         {/* 2-Column Grid: Left is Quiz, Right is Build-a-Box */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: 3-Step Interactive Quiz (7 Cols) */}
-          <div className="lg:col-span-7 bg-[#FAF7F2] p-6 sm:p-8 rounded-2xl border border-[#DCD5C9] shadow-sm">
+          <div className="lg:col-span-7 bg-[#FAF7F2] p-6 sm:p-8 rounded-2xl border border-[#E2DDD2] shadow-sm">
             {!quizSubmitted ? (
               <div>
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E8E3DA]">
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E2DDD2]">
                   <div className="flex items-center gap-2">
                     <Sparkles size={18} className="text-[#A63A32]" />
-                    <span className="font-serif text-lg font-medium text-[#1A1F2B]">
+                    <span className="font-serif text-lg font-medium text-[#0E1420]">
                       The 30-Second Gifting Quiz
                     </span>
                   </div>
@@ -112,7 +113,7 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                 {/* Step 1: Who is this for? */}
                 {quizStep === 1 && (
                   <div className="space-y-4 animate-fade-in">
-                    <h3 className="font-serif text-xl text-[#1A1F2B]">
+                    <h3 className="font-serif text-xl text-[#0E1420]">
                       1. Who are you celebrating today?
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -131,12 +132,12 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                           }}
                           className={`p-4 rounded-xl text-left border transition-all flex flex-col justify-between h-24 ${
                             recipient === item.id
-                              ? 'border-[#A63A32] bg-[#A63A32]/5 text-[#A63A32] font-semibold'
-                              : 'border-[#E8E3DA] bg-white hover:border-[#C9A461]'
+                              ? 'border-[#0E1420] bg-[#EDE7DD] text-[#0E1420] font-semibold'
+                              : 'border-[#E2DDD2] bg-white hover:border-[#0E1420]/50'
                           }`}
                         >
                           <span className="text-xl">{item.icon}</span>
-                          <span className="text-xs font-sans text-[#1A1F2B] font-medium leading-tight">
+                          <span className="text-xs font-sans text-[#0E1420] font-medium leading-tight">
                             {item.label}
                           </span>
                         </button>
@@ -148,7 +149,7 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                 {/* Step 2: What is your budget? */}
                 {quizStep === 2 && (
                   <div className="space-y-4 animate-fade-in">
-                    <h3 className="font-serif text-xl text-[#1A1F2B]">
+                    <h3 className="font-serif text-xl text-[#0E1420]">
                       2. What is your comfortable budget?
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -165,14 +166,14 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                           }}
                           className={`p-4 rounded-xl text-left border transition-all flex flex-col justify-between h-28 ${
                             budget === item.id
-                              ? 'border-[#A63A32] bg-[#A63A32]/5 text-[#A63A32] font-semibold'
-                              : 'border-[#E8E3DA] bg-white hover:border-[#C9A461]'
+                              ? 'border-[#0E1420] bg-[#EDE7DD] text-[#0E1420] font-semibold'
+                              : 'border-[#E2DDD2] bg-white hover:border-[#0E1420]/50'
                           }`}
                         >
-                          <span className="font-serif text-base font-bold text-[#1A1F2B]">
+                          <span className="font-serif text-base font-bold text-[#0E1420]">
                             {item.label}
                           </span>
-                          <span className="text-xs font-sans text-[#1A1F2B]/60 leading-tight">
+                          <span className="text-xs font-sans text-[#0E1420]/70 leading-tight">
                             {item.desc}
                           </span>
                         </button>
@@ -184,7 +185,7 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                 {/* Step 3: What is her aesthetic / vibe? */}
                 {quizStep === 3 && (
                   <div className="space-y-4 animate-fade-in">
-                    <h3 className="font-serif text-xl text-[#1A1F2B]">
+                    <h3 className="font-serif text-xl text-[#0E1420]">
                       3. What aesthetic matches her personal style?
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
@@ -202,14 +203,14 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                           }}
                           className={`p-4 rounded-xl text-left border transition-all ${
                             vibe === item.id
-                              ? 'border-[#A63A32] bg-[#A63A32]/5 text-[#A63A32] font-semibold'
-                              : 'border-[#E8E3DA] bg-white hover:border-[#C9A461]'
+                              ? 'border-[#0E1420] bg-[#EDE7DD] text-[#0E1420] font-semibold'
+                              : 'border-[#E2DDD2] bg-white hover:border-[#0E1420]/50'
                           }`}
                         >
-                          <span className="font-serif text-base font-bold text-[#1A1F2B] block">
+                          <span className="font-serif text-base font-bold text-[#0E1420] block">
                             {item.title}
                           </span>
-                          <span className="text-xs font-sans text-[#1A1F2B]/60 mt-1 block">
+                          <span className="text-xs font-sans text-[#0E1420]/70 mt-1 block">
                             {item.desc}
                           </span>
                         </button>
@@ -220,10 +221,10 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
 
                 {/* Back button for steps > 1 */}
                 {quizStep > 1 && (
-                  <div className="mt-6 pt-4 border-t border-[#E8E3DA] flex justify-between">
+                  <div className="mt-6 pt-4 border-t border-[#E2DDD2] flex justify-between">
                     <button
                       onClick={() => setQuizStep(quizStep - 1)}
-                      className="text-xs text-[#1A1F2B]/70 hover:text-[#A63A32]"
+                      className="text-xs text-[#0E1420]/70 hover:text-[#A63A32]"
                     >
                       ← Back to Step {quizStep - 1}
                     </button>
@@ -233,18 +234,18 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
             ) : (
               /* Quiz Results State */
               <div className="space-y-6 animate-fade-in">
-                <div className="flex items-center justify-between pb-3 border-b border-[#E8E3DA]">
+                <div className="flex items-center justify-between pb-3 border-b border-[#E2DDD2]">
                   <div>
                     <span className="text-[10px] uppercase font-bold tracking-widest text-[#A63A32]">
                       Personalized Recommendations
                     </span>
-                    <h3 className="font-serif text-xl text-[#1A1F2B] font-medium">
+                    <h3 className="font-serif text-xl text-[#0E1420] font-medium">
                       Curated For Your Special Gift
                     </h3>
                   </div>
                   <button
                     onClick={handleResetQuiz}
-                    className="text-xs text-[#A63A32] hover:underline flex items-center gap-1"
+                    className="text-xs text-[#A63A32] hover:underline flex items-center gap-1 font-medium"
                   >
                     <RotateCcw size={12} />
                     <span>Retake Quiz</span>
@@ -256,17 +257,18 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                   {getQuizRecommendations().map((prod) => (
                     <div
                       key={prod.id}
-                      className="bg-white p-3 rounded-xl border border-[#E8E3DA] hover:border-[#C9A461] transition-all flex gap-3"
+                      className="bg-white p-3 rounded-xl border border-[#E2DDD2] hover:border-[#0E1420]/40 transition-all flex gap-3 shadow-sm"
                     >
                       <img
                         src={prod.images[0]}
                         alt={prod.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, prod.category)}
                         className="w-20 h-20 rounded-lg object-cover bg-[#EDE7DD] shrink-0"
                       />
                       <div className="flex flex-col justify-between flex-1 min-w-0">
                         <div>
-                          <h4 className="font-serif text-sm font-medium text-[#1A1F2B] line-clamp-1">
+                          <h4 className="font-serif text-sm font-medium text-[#0E1420] line-clamp-1">
                             {prod.name}
                           </h4>
                           <span className="text-xs font-semibold text-[#A63A32]">
@@ -276,13 +278,13 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                         <div className="flex items-center gap-2 mt-2">
                           <button
                             onClick={() => onSelectProduct(prod)}
-                            className="text-[11px] text-[#1A1F2B]/70 hover:underline"
+                            className="text-[11px] text-[#0E1420]/70 hover:underline"
                           >
                             Details
                           </button>
                           <button
                             onClick={() => onAddToCart(prod, 1)}
-                            className="px-2.5 py-1 rounded-full bg-[#0E1420] text-white text-[10px] uppercase tracking-wider font-semibold hover:bg-[#A63A32] transition-colors"
+                            className="px-2.5 py-1 rounded-full bg-[#0E1420] text-[#EDE7DD] text-[10px] uppercase tracking-wider font-semibold hover:bg-[#1A233A] transition-colors"
                           >
                             + Add to Bag
                           </button>
@@ -296,24 +298,24 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
           </div>
 
           {/* Right Column: Build-A-Gift-Box (5 Cols) */}
-          <div className="lg:col-span-5 bg-[#0E1420] text-[#EDE7DD] p-6 sm:p-8 rounded-2xl border border-[#C9A461]/30 shadow-lg flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[#EDE7DD] text-[#0E1420] p-6 sm:p-8 rounded-2xl border border-[#0E1420]/15 shadow-md flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 text-[#C9A461] mb-2">
+              <div className="flex items-center gap-2 text-[#A63A32] mb-2">
                 <Gift size={18} />
                 <span className="text-xs uppercase tracking-[0.2em] font-semibold">
                   Custom Presentation
                 </span>
               </div>
-              <h3 className="font-serif text-2xl font-light text-white">
+              <h3 className="font-serif text-2xl font-light text-[#0E1420]">
                 Build a Keepsake Gift Box
               </h3>
-              <p className="text-xs text-[#EDE7DD]/70 mt-1 font-sans">
+              <p className="text-xs text-[#0E1420]/80 mt-1 font-sans">
                 Select 1 to 3 pieces. We assemble them in a luxury velvet box with an embossed ribbon and handwritten wax-sealed note.
               </p>
 
               {/* Box Color Selection */}
               <div className="mt-5">
-                <label className="block text-[11px] uppercase tracking-wider text-[#C9A461] mb-2 font-semibold">
+                <label className="block text-[11px] uppercase tracking-wider text-[#A63A32] mb-2 font-semibold">
                   1. Box Color Choice
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -321,22 +323,22 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                     onClick={() => setBoxColor('navy')}
                     className={`py-2 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-2 transition-all ${
                       boxColor === 'navy'
-                        ? 'border-[#C9A461] bg-[#1A233A] text-white font-semibold'
-                        : 'border-[#2A344A] text-[#EDE7DD]/60 hover:text-white'
+                        ? 'border-[#0E1420] bg-white text-[#0E1420] font-semibold shadow-sm'
+                        : 'border-[#0E1420]/20 text-[#0E1420]/70 hover:text-[#0E1420]'
                     }`}
                   >
-                    <span className="w-3 h-3 rounded-full bg-[#0E1420] border border-[#C9A461]"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#0E1420] border border-[#0E1420]"></span>
                     <span>Midnight Navy</span>
                   </button>
                   <button
                     onClick={() => setBoxColor('ivory')}
                     className={`py-2 px-3 rounded-lg text-xs font-medium border flex items-center justify-center gap-2 transition-all ${
                       boxColor === 'ivory'
-                        ? 'border-[#C9A461] bg-[#1A233A] text-white font-semibold'
-                        : 'border-[#2A344A] text-[#EDE7DD]/60 hover:text-white'
+                        ? 'border-[#0E1420] bg-white text-[#0E1420] font-semibold shadow-sm'
+                        : 'border-[#0E1420]/20 text-[#0E1420]/70 hover:text-[#0E1420]'
                     }`}
                   >
-                    <span className="w-3 h-3 rounded-full bg-[#EDE7DD] border border-[#C9A461]"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#EDE7DD] border border-[#0E1420]/40"></span>
                     <span>Pearl Ivory</span>
                   </button>
                 </div>
@@ -345,7 +347,7 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
               {/* Select Pieces for Box */}
               <div className="mt-5">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[11px] uppercase tracking-wider text-[#C9A461] font-semibold">
+                  <label className="text-[11px] uppercase tracking-wider text-[#A63A32] font-semibold">
                     2. Pick Pieces ({boxItems.length}/3 selected)
                   </label>
                 </div>
@@ -358,8 +360,8 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                         onClick={() => handleToggleBoxItem(prod)}
                         className={`p-2 rounded-lg border cursor-pointer flex items-center justify-between text-xs transition-all ${
                           isSelected
-                            ? 'border-[#C9A461] bg-[#1A233A] text-white'
-                            : 'border-[#2A344A] bg-[#141C2B] text-[#EDE7DD]/70 hover:border-[#C9A461]/40'
+                            ? 'border-[#0E1420] bg-white text-[#0E1420] font-medium shadow-sm'
+                            : 'border-[#0E1420]/15 bg-[#FAF7F2] text-[#0E1420]/80 hover:border-[#0E1420]/40'
                         }`}
                       >
                         <div className="flex items-center gap-2 truncate">
@@ -367,11 +369,12 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                             src={prod.images[0]}
                             alt={prod.name}
                             referrerPolicy="no-referrer"
+                            onError={(e) => handleImageError(e, prod.category)}
                             className="w-8 h-8 rounded object-cover"
                           />
                           <span className="truncate">{prod.name}</span>
                         </div>
-                        <span className="font-semibold shrink-0 text-[#C9A461]">
+                        <span className="font-semibold shrink-0 text-[#A63A32]">
                           {isSelected ? '✓ Added' : `+ ₹${prod.price}`}
                         </span>
                       </div>
@@ -382,21 +385,21 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
 
               {/* Handwritten Card Note */}
               <div className="mt-5">
-                <label className="block text-[11px] uppercase tracking-wider text-[#C9A461] mb-1.5 font-semibold">
+                <label className="block text-[11px] uppercase tracking-wider text-[#A63A32] mb-1.5 font-semibold">
                   3. Personalized Handwritten Card Note
                 </label>
                 <textarea
                   rows={2}
                   value={customNote}
                   onChange={(e) => setCustomNote(e.target.value)}
-                  className="w-full bg-[#141C2B] border border-[#2A344A] rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-[#C9A461] font-serif italic"
+                  className="w-full bg-white border border-[#0E1420]/20 rounded-lg p-2.5 text-xs text-[#0E1420] focus:outline-none focus:border-[#0E1420] font-serif italic"
                   placeholder="Enter your custom message here..."
                 />
               </div>
             </div>
 
             {/* Box Action */}
-            <div className="mt-6 pt-4 border-t border-[#2A344A]">
+            <div className="mt-6 pt-4 border-t border-[#0E1420]/15">
               <button
                 disabled={boxItems.length === 0}
                 onClick={handleAddBoxToBag}
@@ -404,8 +407,8 @@ export const GiftingHub: React.FC<GiftingHubProps> = ({ onSelectProduct, onAddTo
                   boxAddedMessage
                     ? 'bg-emerald-700 text-white'
                     : boxItems.length === 0
-                    ? 'bg-[#2A344A] text-[#EDE7DD]/40 cursor-not-allowed'
-                    : 'bg-[#A63A32] hover:bg-[#8e2e27] text-white'
+                    ? 'bg-[#0E1420]/20 text-[#0E1420]/40 cursor-not-allowed'
+                    : 'bg-[#0E1420] hover:bg-[#1A233A] text-[#EDE7DD]'
                 }`}
               >
                 {boxAddedMessage ? (

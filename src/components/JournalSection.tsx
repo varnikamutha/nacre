@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, ArrowRight, X } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
+import { resolveImageUrl, handleImageError } from '../utils/imageResolver';
 
 interface Article {
   id: string;
@@ -34,7 +35,7 @@ const ARTICLES: Article[] = [
     title: '5 Pieces Emily Cooper Would Wear to a Rooftop in Saint-Germain',
     category: 'Pop-Culture Edit',
     readTime: '3 min read',
-    image: '/assets/images/universe_emily_paris_1789199570293.jpg',
+    image: resolveImageUrl('/assets/images/universe_emily_paris_1789199570293.jpg'),
     excerpt: 'Maximalist French charm meets everyday anti-tarnish ease. How to master bold gold collars and whimsical motifs.',
     content: [
       'Emily Cooper’s wardrobe has never adhered to quiet minimalism. Her style philosophy is unabashed optimism, saturated hues, and jewellery that sparks conversation across a café table.',
@@ -71,7 +72,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
   };
 
   return (
-    <section id="journal-section" className="w-full bg-[#FAF7F2] py-16 sm:py-24 border-t border-[#E8E3DA]">
+    <section id="journal-section" className="w-full bg-[#FAF7F2] py-16 sm:py-24 border-t border-[#0E1420]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -79,11 +80,11 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#A63A32] font-semibold">
               The Nacre Journal
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1F2B] mt-1 font-light">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#0E1420] mt-1 font-light">
               Stories, styling rules & <span className="italic font-normal">visual inspiration</span>.
             </h2>
           </div>
-          <span className="text-xs text-[#1A1F2B]/60 font-sans hidden sm:inline">
+          <span className="text-xs text-[#0E1420]/60 font-sans hidden sm:inline">
             Curated by our Mumbai design studio
           </span>
         </div>
@@ -96,7 +97,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
             return (
               <article
                 key={article.id}
-                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#E8E3DA] hover:border-[#C9A461] transition-all hover:shadow-lg"
+                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#E2DDD2] hover:border-[#0E1420]/40 transition-all hover:shadow-md"
               >
                 <div>
                   <div className="aspect-[16/10] overflow-hidden bg-[#EDE7DD]">
@@ -104,22 +105,23 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
                       src={article.image}
                       alt={article.title}
                       referrerPolicy="no-referrer"
+                      onError={(e) => handleImageError(e, 'default')}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-5 sm:p-6">
-                    <div className="flex items-center justify-between text-xs text-[#1A1F2B]/50 mb-2">
+                    <div className="flex items-center justify-between text-xs text-[#0E1420]/50 mb-2">
                       <span className="text-[#A63A32] uppercase tracking-wider font-semibold text-[10px]">
                         {article.category}
                       </span>
                       <span>{article.readTime}</span>
                     </div>
 
-                    <h3 className="font-serif text-lg sm:text-xl font-medium text-[#1A1F2B] leading-snug group-hover:text-[#A63A32] transition-colors">
+                    <h3 className="font-serif text-lg sm:text-xl font-medium text-[#0E1420] leading-snug group-hover:text-[#A63A32] transition-colors">
                       {article.title}
                     </h3>
 
-                    <p className="text-xs text-[#1A1F2B]/70 font-sans mt-2.5 line-clamp-3 leading-relaxed">
+                    <p className="text-xs text-[#0E1420]/70 font-sans mt-2.5 line-clamp-3 leading-relaxed">
                       {article.excerpt}
                     </p>
                   </div>
@@ -128,7 +130,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
                 <div className="px-5 sm:px-6 pb-6 pt-2 flex items-center justify-between border-t border-[#F2ECE3]">
                   <button
                     onClick={() => setActiveArticle(article)}
-                    className="text-xs font-semibold uppercase tracking-wider text-[#1A1F2B] group-hover:text-[#A63A32] flex items-center gap-1.5 transition-colors"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#0E1420] group-hover:text-[#A63A32] flex items-center gap-1.5 transition-colors"
                   >
                     <span>Read Article</span>
                     <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
@@ -151,10 +153,10 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
       {/* Article Reading Modal */}
       {activeArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl bg-[#FAF7F2] text-[#1A1F2B] rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto border border-[#E2DDD2]">
+          <div className="relative w-full max-w-2xl bg-[#FAF7F2] text-[#0E1420] rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto border border-[#E2DDD2]">
             <button
               onClick={() => setActiveArticle(null)}
-              className="absolute top-5 right-5 p-2 text-[#1A1F2B]/60 hover:text-black rounded-full"
+              className="absolute top-5 right-5 p-2 text-[#0E1420]/60 hover:text-black rounded-full"
             >
               <X size={20} />
             </button>
@@ -162,7 +164,7 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
             <span className="text-xs uppercase font-bold tracking-widest text-[#A63A32]">
               {activeArticle.category} · {activeArticle.readTime}
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#1A1F2B] mt-2 mb-4 leading-tight">
+            <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#0E1420] mt-2 mb-4 leading-tight">
               {activeArticle.title}
             </h3>
 
@@ -171,11 +173,12 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
                 src={activeArticle.image}
                 alt={activeArticle.title}
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, 'default')}
                 className="w-full h-full object-cover"
               />
             </div>
 
-            <div className="space-y-4 text-sm text-[#1A1F2B]/85 font-sans leading-relaxed">
+            <div className="space-y-4 text-sm text-[#0E1420]/85 font-sans leading-relaxed">
               {activeArticle.content.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -188,13 +191,14 @@ export const JournalSection: React.FC<JournalSectionProps> = ({ onSelectProduct 
                   src={getFeaturedProduct(activeArticle.featuredProductId).images[0]}
                   alt="Featured piece"
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, getFeaturedProduct(activeArticle.featuredProductId).category)}
                   className="w-12 h-12 rounded object-cover"
                 />
                 <div>
                   <span className="text-[10px] uppercase tracking-wider text-[#A63A32] font-semibold block">
                     Featured in this article
                   </span>
-                  <span className="font-serif text-sm font-medium text-[#1A1F2B]">
+                  <span className="font-serif text-sm font-medium text-[#0E1420]">
                     {getFeaturedProduct(activeArticle.featuredProductId).name}
                   </span>
                 </div>

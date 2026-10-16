@@ -1,6 +1,7 @@
 import { Product } from '../types';
+import { resolveImageUrl } from '../utils/imageResolver';
 
-export const PRODUCTS: Product[] = [
+const RAW_PRODUCTS: Product[] = [
   // ==========================================
   // BRACELETS (6 curated styles)
   // ==========================================
@@ -670,6 +671,11 @@ export const PRODUCTS: Product[] = [
     stylingNote: 'Instant effortless jewellery wardrobe in one package. Foolproof gift.'
   }
 ];
+
+export const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => ({
+  ...product,
+  images: product.images.map((img) => resolveImageUrl(img))
+}));
 
 export const REVIEWS: { [key: string]: string[] } = {
   'bracelet-riviera-pearl': [

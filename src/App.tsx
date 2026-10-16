@@ -4,22 +4,50 @@ import { Hero } from './components/Hero';
 import { TrustStrip } from './components/TrustStrip';
 import { CategoryNav } from './components/CategoryNav';
 import { ProductCard } from './components/ProductCard';
-import { ShopTheUniverse } from './components/ShopTheUniverse';
-import { GiftingHub } from './components/GiftingHub';
-import { OurCraft } from './components/OurCraft';
-import { JournalSection } from './components/JournalSection';
 import { CustomerReviews } from './components/CustomerReviews';
 import { Footer } from './components/Footer';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { SearchModal } from './components/SearchModal';
+import { FictionalEraPage } from './pages/FictionalEraPage';
+import { GiftingCornerPage } from './pages/GiftingCornerPage';
+import { JournalCraftPage } from './pages/JournalCraftPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { PRODUCTS } from './data/products';
 import { UNIVERSE_EDITIONS } from './data/universes';
-import { Product, CartItem, CategoryType, UniverseId } from './types';
-import { SlidersHorizontal, Sparkles, X } from 'lucide-react';
+import { Product, CartItem, CategoryType, UniverseId, ActivePage } from './types';
+import { SlidersHorizontal, Sparkles, X, Gift, ArrowRight } from 'lucide-react';
 
 export default function App() {
+  // Active Page State
+  const [activePage, setActivePage] = useState<ActivePage>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'fictional-era' || hash === 'gifting' || hash === 'journal' || hash === 'reviews' || hash === 'shop') {
+        return hash as ActivePage;
+      }
+    }
+    return 'shop';
+  });
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash === 'fictional-era' || hash === 'gifting' || hash === 'journal' || hash === 'reviews' || hash === 'shop') {
+        setActivePage(hash as ActivePage);
+      }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  const handleNavigatePage = (page: ActivePage) => {
+    setActivePage(page);
+    window.location.hash = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Category & Filter States
   const [activeCategory, setActiveCategory] = useState<CategoryType | 'all' | 'under-999'>('all');
   const [activeUniverse, setActiveUniverse] = useState<UniverseId | null>(null);
@@ -191,17 +219,19 @@ export default function App() {
   const cartTotalCount = cart.reduce((c, i) => c + i.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#F7F3EC] text-[#1A1F2B] font-sans antialiased selection:bg-[#C9A461] selection:text-[#0E1420]">
+    <div className="min-h-screen bg-[#F7F3EC] text-[#0E1420] font-sans antialiased selection:bg-[#0E1420] selection:text-[#F7F3EC]">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0E1420] text-[#EDE7DD] border border-[#C9A461]/40 px-5 py-2.5 rounded-full shadow-2xl text-xs font-sans font-medium flex items-center gap-2 animate-fade-in pointer-events-none">
-          <span className="w-2 h-2 rounded-full bg-[#C9A461]"></span>
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#EDE7DD] text-[#0E1420] border border-[#0E1420]/25 px-5 py-2.5 rounded-full shadow-2xl text-xs font-sans font-medium flex items-center gap-2 animate-fade-in pointer-events-none">
+          <span className="w-2 h-2 rounded-full bg-[#0E1420]"></span>
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Navigation Header */}
       <Navbar
+        activePage={activePage}
+        onNavigatePage={handleNavigatePage}
         cartCount={cartTotalCount}
         wishlistCount={wishlist.length}
         onOpenCart={() => setIsCartOpen(true)}
@@ -210,166 +240,218 @@ export default function App() {
         activeCategory={activeCategory}
         onSelectCategory={(cat) => {
           setActiveCategory(cat);
-          handleNavigateSection('shop-section');
+          handleNavigatePage('shop');
         }}
         onSelectUniverse={(univ) => {
           setActiveUniverse(univ);
-          handleNavigateSection('shop-section');
+          handleNavigatePage('fictional-era');
         }}
         activeUniverse={activeUniverse}
-        onNavigateSection={handleNavigateSection}
       />
 
-      {/* Hero Campaign Section */}
-      <Hero
-        onShopClick={() => handleNavigateSection('shop-section')}
-        onUniverseClick={() => handleNavigateSection('universe-section')}
-      />
+      {/* Page Routing */}
+      {activePage === 'fictional-era' && (
+        <FictionalEraPage
+          initialUniverse={activeUniverse}
+          onSelectProduct={(p) => {
+            setSelectedProduct(p);
+            setIsPDPModalOpen(true);
+          }}
+          onAddToCart={handleAddToCart}
+          onToggleWishlist={handleToggleWishlist}
+          wishlist={wishlist}
+          onNavigatePage={handleNavigatePage}
+        />
+      )}
 
-      {/* Trust Strip */}
-      <TrustStrip />
+      {activePage === 'gifting' && (
+        <GiftingCornerPage
+          onSelectProduct={(p) => {
+            setSelectedProduct(p);
+            setIsPDPModalOpen(true);
+          }}
+          onAddToCart={handleAddToCart}
+          onToggleWishlist={handleToggleWishlist}
+          wishlist={wishlist}
+          onNavigatePage={handleNavigatePage}
+        />
+      )}
 
-      {/* Category Navigation Bar (Circular Pinterest chips) */}
-      <CategoryNav
-        activeCategory={activeCategory}
-        onSelectCategory={(cat) => {
-          setActiveCategory(cat);
-          handleNavigateSection('shop-section');
-        }}
-      />
+      {activePage === 'journal' && (
+        <JournalCraftPage
+          onSelectProduct={(p) => {
+            setSelectedProduct(p);
+            setIsPDPModalOpen(true);
+          }}
+          onNavigatePage={handleNavigatePage}
+        />
+      )}
 
-      {/* Main Product Catalog Section */}
-      <main id="shop-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Active Universe Banner if active */}
-        {activeUniverseData && (
-          <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-[#0E1420] text-[#EDE7DD] border border-[#C9A461]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
-            <div>
-              <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#C9A461]">
-                Active Pop-Culture Universe
-              </span>
-              <h2 className="font-serif text-2xl text-white mt-0.5">
-                {activeUniverseData.title}
-              </h2>
-              <p className="text-xs text-[#EDE7DD]/70 font-sans italic mt-1 max-w-xl">
-                "{activeUniverseData.quote}"
-              </p>
+      {activePage === 'reviews' && (
+        <ReviewsPage
+          onSelectProduct={(p) => {
+            setSelectedProduct(p);
+            setIsPDPModalOpen(true);
+          }}
+          onAddToCart={handleAddToCart}
+          onNavigatePage={handleNavigatePage}
+        />
+      )}
+
+      {activePage === 'shop' && (
+        <>
+          {/* Hero Campaign Section */}
+          <Hero
+            onShopClick={() => {
+              const el = document.getElementById('shop-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            onUniverseClick={() => handleNavigatePage('fictional-era')}
+          />
+
+          {/* Trust Strip */}
+          <TrustStrip />
+
+          {/* Category Navigation Bar (Circular Pinterest chips) */}
+          <CategoryNav
+            activeCategory={activeCategory}
+            onSelectCategory={(cat) => {
+              setActiveCategory(cat);
+              const el = document.getElementById('shop-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+
+          {/* Main Product Catalog Section */}
+          <main id="shop-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            {/* Filter Controls & Sort Bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2DDD2] mb-8">
+              <div>
+                <span className="text-xs text-[#0E1420]/70 font-sans">
+                  Showing <strong className="text-[#0E1420]">{filteredProducts.length}</strong> handcrafted pieces in 18K gold
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 text-xs text-[#0E1420]/80">
+                  <SlidersHorizontal size={14} className="text-[#A63A32]" />
+                  <span className="font-medium">Sort By:</span>
+                </div>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="bg-[#FAF7F2] border border-[#E2DDD2] rounded-lg px-3 py-1.5 text-xs text-[#0E1420] focus:outline-none focus:border-[#0E1420]"
+                >
+                  <option value="featured">Featured Curation</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating">Highest Customer Rated</option>
+                </select>
+              </div>
             </div>
-            <button
-              onClick={() => setActiveUniverse(null)}
-              className="px-4 py-2 rounded-full bg-[#1A233A] hover:bg-[#2A344A] text-xs text-[#EDE7DD] font-medium transition-colors border border-[#2A344A] flex items-center gap-1.5 self-start sm:self-auto"
-            >
-              <X size={14} />
-              <span>Show All Universes</span>
-            </button>
-          </div>
-        )}
 
-        {/* Filter Controls & Sort Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E8E2D5] mb-8">
-          <div>
-            <span className="text-xs text-[#1A1F2B]/60 font-sans">
-              Showing <strong className="text-[#1A1F2B]">{filteredProducts.length}</strong> handcrafted pieces in 18K gold
-            </span>
-          </div>
+            {/* Product Grid (All Reference Products) */}
+            {filteredProducts.length === 0 ? (
+              <div className="py-20 text-center space-y-3">
+                <p className="font-serif text-xl text-[#0E1420]/70 italic">
+                  No pieces match the selected combination.
+                </p>
+                <button
+                  onClick={() => {
+                    setActiveCategory('all');
+                    setActiveUniverse(null);
+                  }}
+                  className="px-6 py-2.5 rounded-full bg-[#A63A32] text-white text-xs uppercase tracking-widest font-semibold"
+                >
+                  Reset All Filters
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onQuickAdd={(p) => handleAddToCart(p, 1)}
+                    onViewDetails={(p) => {
+                      setSelectedProduct(p);
+                      setIsPDPModalOpen(true);
+                    }}
+                    onToggleWishlist={handleToggleWishlist}
+                    isWishlisted={wishlist.some((w) => w.id === product.id)}
+                  />
+                ))}
+              </div>
+            )}
+          </main>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs text-[#1A1F2B]/80">
-              <SlidersHorizontal size={14} className="text-[#A63A32]" />
-              <span className="font-medium">Sort By:</span>
+          {/* Feature Hub Showcase Banners */}
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Banner 1: Fictional Era */}
+              <div
+                onClick={() => handleNavigatePage('fictional-era')}
+                className="group relative bg-[#EDE7DD] p-8 sm:p-10 rounded-3xl border border-[#0E1420]/15 overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[280px]"
+              >
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF7F2] text-xs font-semibold uppercase tracking-wider text-[#0E1420] mb-3">
+                    <Sparkles size={12} className="text-[#A63A32]" />
+                    <span>Dedicated Experience</span>
+                  </div>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-[#0E1420] font-light">
+                    Enter the <span className="italic text-[#A63A32] font-normal">Fictional Era</span>.
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#0E1420]/75 font-sans mt-2 max-w-sm">
+                    Step into Emily in Paris, The Summer I Turned Pretty, Bridgerton & To All The Boys aesthetic capsules with our interactive era matcher.
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#0E1420] group-hover:text-[#A63A32] transition-colors">
+                  <span>Explore All Fictional Eras</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+
+              {/* Banner 2: The Gifting Corner */}
+              <div
+                onClick={() => handleNavigatePage('gifting')}
+                className="group relative bg-[#FAF7F2] p-8 sm:p-10 rounded-3xl border border-[#E2DDD2] overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[280px]"
+              >
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDE7DD] text-xs font-semibold uppercase tracking-wider text-[#0E1420] mb-3">
+                    <Gift size={12} className="text-[#A63A32]" />
+                    <span>The Gifting Atelier</span>
+                  </div>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-[#0E1420] font-light">
+                    The <span className="italic text-[#A63A32] font-normal">Gifting Corner</span>.
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#0E1420]/75 font-sans mt-2 max-w-sm">
+                    Take our 30-Second Gift Quiz or build a custom 3-piece gift box with plush velvet packaging, wax-sealed handwritten notes, and a 15% discount.
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#0E1420] group-hover:text-[#A63A32] transition-colors">
+                  <span>Open The Gifting Corner</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-white border border-[#E8E2D5] rounded-lg px-3 py-1.5 text-xs text-[#1A1F2B] focus:outline-none focus:border-[#C9A461]"
-            >
-              <option value="featured">Featured Curation</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Highest Customer Rated</option>
-            </select>
-          </div>
-        </div>
+          </section>
 
-        {/* Product Grid (All 16 Reference Products) */}
-        {filteredProducts.length === 0 ? (
-          <div className="py-20 text-center space-y-3">
-            <p className="font-serif text-xl text-[#1A1F2B]/70 italic">
-              No pieces match the selected combination.
-            </p>
-            <button
-              onClick={() => {
-                setActiveCategory('all');
-                setActiveUniverse(null);
-              }}
-              className="px-6 py-2.5 rounded-full bg-[#A63A32] text-white text-xs uppercase tracking-widest font-semibold"
-            >
-              Reset All Filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onQuickAdd={(p) => handleAddToCart(p, 1)}
-                onViewDetails={(p) => {
-                  setSelectedProduct(p);
-                  setIsPDPModalOpen(true);
-                }}
-                onToggleWishlist={handleToggleWishlist}
-                isWishlisted={wishlist.some((w) => w.id === product.id)}
-              />
-            ))}
-          </div>
-        )}
-      </main>
-
-      {/* Signature "Shop the Universe" Hub */}
-      <ShopTheUniverse
-        activeUniverse={activeUniverse}
-        onSelectUniverse={(univId) => setActiveUniverse(univId)}
-        onViewAllProducts={() => {
-          setActiveUniverse(null);
-          setActiveCategory('all');
-          handleNavigateSection('shop-section');
-        }}
-      />
-
-      {/* Gifting Hub & Quiz & Build-a-Box */}
-      <GiftingHub
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          setIsPDPModalOpen(true);
-        }}
-        onAddToCart={handleAddToCart}
-      />
-
-      {/* Our Craft & Anti-Tarnish Metallurgy Section */}
-      <OurCraft />
-
-      {/* Editorial Journal Section */}
-      <JournalSection
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          setIsPDPModalOpen(true);
-        }}
-      />
-
-      {/* Verified Customer Reviews */}
-      <CustomerReviews />
+          {/* Verified Customer Reviews */}
+          <CustomerReviews onViewAllReviews={() => handleNavigatePage('reviews')} />
+        </>
+      )}
 
       {/* Footer */}
       <Footer
+        onNavigatePage={handleNavigatePage}
         onSelectCategory={(cat) => {
           setActiveCategory(cat);
-          handleNavigateSection('shop-section');
+          handleNavigatePage('shop');
         }}
         onSelectUniverse={(univ) => {
           setActiveUniverse(univ);
-          handleNavigateSection('shop-section');
+          handleNavigatePage('fictional-era');
         }}
-        onNavigateSection={handleNavigateSection}
       />
 
       {/* PDP Modal */}
