@@ -1,3 +1,5 @@
+export type ActivePage = 'shop' | 'fictional-era' | 'gifting' | 'journal' | 'reviews';
+
 export type CategoryType = 'bracelets' | 'rings' | 'earrings' | 'necklaces' | 'anklets' | 'sets';
 
 export type MetalType = 'gold' | 'rose-gold' | 'silver' | 'two-tone';

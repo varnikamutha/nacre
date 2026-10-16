@@ -1,6 +1,7 @@
 import { UniverseEdition } from '../types';
+import { resolveImageUrl } from '../utils/imageResolver';
 
-export const UNIVERSE_EDITIONS: UniverseEdition[] = [
+const RAW_UNIVERSE_EDITIONS: UniverseEdition[] = [
   {
     id: 'emily-in-paris',
     title: 'Emily in Paris Edit',
@@ -46,3 +47,8 @@ export const UNIVERSE_EDITIONS: UniverseEdition[] = [
     editorialNote: 'Sculpted pavé swans cradling blush marquise gems, organic botanical vine bands with brilliant blue sapphires, and royal tiara sparkle.'
   }
 ];
+
+export const UNIVERSE_EDITIONS: UniverseEdition[] = RAW_UNIVERSE_EDITIONS.map((u) => ({
+  ...u,
+  heroImage: resolveImageUrl(u.heroImage)
+}));

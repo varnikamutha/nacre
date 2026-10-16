@@ -3,6 +3,7 @@ import { X, Heart, Star, ShieldCheck, Droplets, Sparkles, ChevronDown, ChevronUp
 import { Product, UniverseId } from '../types';
 import { SizeGuideModal } from './SizeGuideModal';
 import { PRODUCTS } from '../data/products';
+import { handleImageError } from '../utils/imageResolver';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -75,11 +76,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto">
-        <div className="relative w-full max-w-4xl bg-[#F7F3EC] text-[#1A1F2B] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col md:flex-row border border-[#E2DDD2]">
+        <div className="relative w-full max-w-4xl bg-[#F7F3EC] text-[#0E1420] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col md:flex-row border border-[#E2DDD2]">
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-white/80 hover:bg-white text-[#1A1F2B] shadow-md transition-colors"
+            className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-white/80 hover:bg-white text-[#0E1420] shadow-md transition-colors"
             aria-label="Close details"
           >
             <X size={19} />
@@ -93,13 +94,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 src={product.images[selectedImageIdx] || product.images[0]}
                 alt={product.name}
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.dataset.fallbackTried && target.src.includes('/assets/images/')) {
-                    target.dataset.fallbackTried = 'true';
-                    target.src = target.src.replace('/assets/images/', '/src/assets/images/');
-                  }
-                }}
+                onError={(e) => handleImageError(e, product.category)}
                 className="w-full h-full object-cover transition-all duration-300 select-none"
               />
 
@@ -111,7 +106,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       e.stopPropagation();
                       handlePrevImage();
                     }}
-                    className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#1A1F2B] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#0E1420] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
                     aria-label="Previous product image"
                   >
                     <ChevronLeft size={18} />
@@ -121,7 +116,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       e.stopPropagation();
                       handleNextImage();
                     }}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#1A1F2B] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white text-[#0E1420] shadow-lg transition-all opacity-80 group-hover/stage:opacity-100 hover:scale-110 active:scale-95"
                     aria-label="Next product image"
                   >
                     <ChevronRight size={18} />
@@ -167,14 +162,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         src={img}
                         alt={`${product.name} thumbnail ${idx + 1}`}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, product.category)}
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="text-left">
-                      <p className="text-[11px] font-semibold text-[#1A1F2B] whitespace-nowrap">
+                      <p className="text-[11px] font-semibold text-[#0E1420] whitespace-nowrap">
                         {idx === 0 ? '1. Main View' : '2. On-Screen'}
                       </p>
-                      <p className="text-[9px] text-[#1A1F2B]/60 uppercase tracking-wider whitespace-nowrap">
+                      <p className="text-[9px] text-[#0E1420]/60 uppercase tracking-wider whitespace-nowrap">
                         {idx === 0 ? 'Studio Shot' : 'Emily in Paris'}
                       </p>
                     </div>
@@ -194,25 +190,26 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     onSelectUniverse(product.universe || null);
                     onClose();
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1A233A] text-[#C9A461] text-[10px] uppercase tracking-widest font-semibold hover:bg-[#2A344A] transition-colors mb-3"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDE7DD] text-[#0E1420] border border-[#0E1420]/20 text-[10px] uppercase tracking-widest font-semibold hover:bg-[#E2DDD2] transition-colors mb-3"
                 >
-                  <span>★ {product.universe.replace(/-/g, ' ')} edit</span>
+                  <span className="text-[#A63A32]">★</span>
+                  <span>{product.universe.replace(/-/g, ' ')} edit</span>
                 </button>
               )}
 
               {/* Title */}
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#1A1F2B] font-medium leading-snug">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#0E1420] font-medium leading-snug">
                 {product.name}
               </h2>
 
               {/* Price Row */}
               <div className="flex items-baseline gap-3 mt-3">
-                <span className="font-serif text-2xl font-bold text-[#1A1F2B]">
+                <span className="font-serif text-2xl font-bold text-[#0E1420]">
                   ₹{product.price.toLocaleString('en-IN')}
                 </span>
                 {product.originalPrice && (
                   <>
-                    <span className="text-sm text-[#1A1F2B]/40 line-through">
+                    <span className="text-sm text-[#0E1420]/40 line-through">
                       ₹{product.originalPrice.toLocaleString('en-IN')}
                     </span>
                     <span className="text-xs font-semibold px-2 py-0.5 rounded bg-[#A63A32]/15 text-[#A63A32]">
@@ -223,38 +220,38 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
 
               {/* Star Rating & Reviews */}
-              <div className="flex items-center gap-2 mt-2 text-xs text-[#1A1F2B]/70">
+              <div className="flex items-center gap-2 mt-2 text-xs text-[#0E1420]/70">
                 <div className="flex text-[#C9A461]">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={13} className="fill-current" />
                   ))}
                 </div>
-                <span className="font-semibold text-[#1A1F2B]">{product.rating}</span>
+                <span className="font-semibold text-[#0E1420]">{product.rating}</span>
                 <span>·</span>
                 <span className="underline cursor-pointer">{product.reviewCount} customer reviews</span>
               </div>
 
               {/* Evocative Editorial Quote */}
-              <p className="text-xs sm:text-sm text-[#1A1F2B]/80 font-sans italic mt-4 p-3 bg-[#EDE7DD]/60 rounded-xl border-l-2 border-[#C9A461]">
+              <p className="text-xs sm:text-sm text-[#0E1420]/80 font-sans italic mt-4 p-3 bg-[#EDE7DD]/60 rounded-xl border-l-2 border-[#A63A32]">
                 "{product.description}"
               </p>
 
               {/* Trust Badges Row */}
-              <div className="grid grid-cols-2 gap-2 mt-4 text-[11px] text-[#1A1F2B]/75 font-medium">
+              <div className="grid grid-cols-2 gap-2 mt-4 text-[11px] text-[#0E1420]/75 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck size={14} className="text-[#C9A461]" />
+                  <ShieldCheck size={14} className="text-[#A63A32]" />
                   <span>Lifetime Anti-Tarnish</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Droplets size={14} className="text-[#C9A461]" />
+                  <Droplets size={14} className="text-[#A63A32]" />
                   <span>100% Shower Safe</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Sparkles size={14} className="text-[#C9A461]" />
+                  <Sparkles size={14} className="text-[#A63A32]" />
                   <span>18K Vacuum PVD Gold</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[#C9A461] font-bold">✓</span>
+                  <span className="text-[#A63A32] font-bold">✓</span>
                   <span>Hypoallergenic Base</span>
                 </div>
               </div>
@@ -263,7 +260,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {product.sizes && (
                 <div className="mt-5 pt-4 border-t border-[#E2DDD2]">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#1A1F2B]">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#0E1420]">
                       Select Ring Size
                     </span>
                     <button
@@ -281,8 +278,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         onClick={() => setSelectedSize(sz)}
                         className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                           selectedSize === sz
-                            ? 'border-[#A63A32] bg-[#A63A32] text-white shadow-sm'
-                            : 'border-[#E2DDD2] bg-white text-[#1A1F2B] hover:border-[#C9A461]'
+                            ? 'border-[#0E1420] bg-[#0E1420] text-[#EDE7DD] shadow-sm'
+                            : 'border-[#E2DDD2] bg-white text-[#0E1420] hover:border-[#0E1420]'
                         }`}
                       >
                         {sz}
@@ -294,22 +291,22 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {/* Quantity Stepper */}
               <div className="flex items-center gap-4 mt-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#1A1F2B]">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#0E1420]">
                   Quantity
                 </span>
                 <div className="flex items-center border border-[#E2DDD2] rounded-lg bg-white overflow-hidden">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-1.5 text-[#1A1F2B] hover:bg-[#EDE7DD] transition-colors"
+                    className="px-3 py-1.5 text-[#0E1420] hover:bg-[#EDE7DD] transition-colors"
                   >
                     -
                   </button>
-                  <span className="px-3 py-1 text-xs font-semibold text-[#1A1F2B]">
+                  <span className="px-3 py-1 text-xs font-semibold text-[#0E1420]">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-1.5 text-[#1A1F2B] hover:bg-[#EDE7DD] transition-colors"
+                    className="px-3 py-1.5 text-[#0E1420] hover:bg-[#EDE7DD] transition-colors"
                   >
                     +
                   </button>
@@ -347,7 +344,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className={`p-3.5 rounded-full border transition-all ${
                       isWishlisted
                         ? 'border-[#A63A32] bg-[#A63A32] text-white'
-                        : 'border-[#E2DDD2] bg-white text-[#1A1F2B] hover:text-[#A63A32]'
+                        : 'border-[#E2DDD2] bg-white text-[#0E1420] hover:text-[#A63A32]'
                     }`}
                     title="Wishlist"
                   >
@@ -365,7 +362,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
 
               {/* Micro-copy trust */}
-              <p className="text-[11px] text-center text-[#1A1F2B]/60 font-sans mt-3">
+              <p className="text-[11px] text-center text-[#0E1420]/60 font-sans mt-3">
                 Free shipping Pan-India over ₹999 · Easy 7-day returns · Cash on Delivery available
               </p>
 
@@ -375,13 +372,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div>
                   <button
                     onClick={() => setOpenAccordion(openAccordion === 'desc' ? null : 'desc')}
-                    className="w-full py-3 flex items-center justify-between font-semibold text-[#1A1F2B] hover:text-[#A63A32]"
+                    className="w-full py-3 flex items-center justify-between font-semibold text-[#0E1420] hover:text-[#A63A32]"
                   >
                     <span>Styling & Aesthetic Note</span>
                     {openAccordion === 'desc' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
                   {openAccordion === 'desc' && (
-                    <div className="pb-3 text-[#1A1F2B]/80 font-sans leading-relaxed">
+                    <div className="pb-3 text-[#0E1420]/80 font-sans leading-relaxed">
                       {product.stylingNote}
                     </div>
                   )}
@@ -391,13 +388,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div>
                   <button
                     onClick={() => setOpenAccordion(openAccordion === 'materials' ? null : 'materials')}
-                    className="w-full py-3 flex items-center justify-between font-semibold text-[#1A1F2B] hover:text-[#A63A32]"
+                    className="w-full py-3 flex items-center justify-between font-semibold text-[#0E1420] hover:text-[#A63A32]"
                   >
                     <span>Materials & Anti-Tarnish Tech</span>
                     {openAccordion === 'materials' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
                   {openAccordion === 'materials' && (
-                    <div className="pb-3 text-[#1A1F2B]/80 font-sans space-y-1">
+                    <div className="pb-3 text-[#0E1420]/80 font-sans space-y-1">
                       <p><strong>Metal Finish:</strong> {product.materials}</p>
                       {product.dimensions && <p><strong>Dimensions:</strong> {product.dimensions}</p>}
                     </div>
@@ -408,13 +405,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div>
                   <button
                     onClick={() => setOpenAccordion(openAccordion === 'shipping' ? null : 'shipping')}
-                    className="w-full py-3 flex items-center justify-between font-semibold text-[#1A1F2B] hover:text-[#A63A32]"
+                    className="w-full py-3 flex items-center justify-between font-semibold text-[#0E1420] hover:text-[#A63A32]"
                   >
                     <span>Shipping, COD & Returns</span>
                     {openAccordion === 'shipping' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
                   {openAccordion === 'shipping' && (
-                    <div className="pb-3 text-[#1A1F2B]/80 font-sans space-y-1">
+                    <div className="pb-3 text-[#0E1420]/80 font-sans space-y-1">
                       <p>• Dispatched within 24-48 hours from Mumbai.</p>
                       <p>• Metro delivery in 2-4 business days; Rest of India in 4-6 days.</p>
                       <p>• Hassle-free 7-day doorstep exchange or return guarantee.</p>
@@ -426,7 +423,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {/* Complete the Look Cross-Sell */}
               {completeTheLook.length > 0 && (
                 <div className="mt-8 pt-5 border-t border-[#E2DDD2]">
-                  <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-[#1A1F2B] mb-3">
+                  <h4 className="font-serif text-sm font-semibold uppercase tracking-wider text-[#0E1420] mb-3">
                     Complete The Look
                   </h4>
                   <div className="grid grid-cols-3 gap-3">
@@ -434,17 +431,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       <div
                         key={item.id}
                         onClick={() => onSelectProduct(item)}
-                        className="group cursor-pointer bg-white p-2 rounded-lg border border-[#E2DDD2] hover:border-[#C9A461] transition-all"
+                        className="group cursor-pointer bg-white p-2 rounded-lg border border-[#E2DDD2] hover:border-[#0E1420]/40 transition-all shadow-sm"
                       >
                         <div className="aspect-square rounded overflow-hidden mb-1.5 bg-[#EDE7DD]">
                           <img
                             src={item.images[0]}
                             alt={item.name}
                             referrerPolicy="no-referrer"
+                            onError={(e) => handleImageError(e, item.category)}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                           />
                         </div>
-                        <p className="font-serif text-[11px] font-medium text-[#1A1F2B] line-clamp-1">
+                        <p className="font-serif text-[11px] font-medium text-[#0E1420] line-clamp-1">
                           {item.name}
                         </p>
                         <p className="text-[11px] font-semibold text-[#A63A32]">

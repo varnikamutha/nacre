@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, Star, ShoppingBag, Eye, Layers } from 'lucide-react';
 import { Product } from '../types';
+import { handleImageError } from '../utils/imageResolver';
 
 interface ProductCardProps {
   product: Product;
@@ -28,13 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           src={product.images[0]}
           alt={product.name}
           referrerPolicy="no-referrer"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (!target.dataset.fallbackTried && target.src.includes('/assets/images/')) {
-              target.dataset.fallbackTried = 'true';
-              target.src = target.src.replace('/assets/images/', '/src/assets/images/');
-            }
-          }}
+          onError={(e) => handleImageError(e, product.category)}
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
@@ -47,10 +42,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 badge.includes('Under') || badge.includes('HOT')
                   ? 'bg-[#A63A32] text-white'
                   : badge.includes('Emily in Paris')
-                  ? 'bg-[#1A233A] text-[#C9A461] border border-[#C9A461]/40'
+                  ? 'bg-[#EDE7DD] text-[#0E1420] border border-[#0E1420]/20 font-bold'
                   : badge.includes('Bestseller')
-                  ? 'bg-[#0E1420] text-[#C9A461] border border-[#C9A461]/40'
-                  : 'bg-[#F7F3EC]/90 backdrop-blur-sm text-[#1A1F2B] border border-[#C9A461]/30'
+                  ? 'bg-[#0E1420] text-[#EDE7DD]'
+                  : 'bg-[#F7F3EC]/95 backdrop-blur-sm text-[#0E1420] border border-[#0E1420]/20'
               }`}
             >
               {badge}
@@ -60,7 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Multi-view pill indicator on bottom right */}
         {product.images.length > 1 && (
-          <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm text-[9px] uppercase tracking-wider font-semibold text-white/95 flex items-center gap-1 shadow-sm group-hover:bg-[#A63A32] transition-colors">
+          <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-[#0E1420]/80 backdrop-blur-sm text-[9px] uppercase tracking-wider font-semibold text-white/95 flex items-center gap-1 shadow-sm group-hover:bg-[#A63A32] transition-colors">
             <Layers size={10} className="text-[#C9A461]" />
             <span>2 Views</span>
           </div>
@@ -76,7 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-all duration-200 shadow-sm z-10 ${
             isWishlisted
               ? 'bg-[#A63A32] text-white'
-              : 'bg-[#FAF7F2]/80 text-[#1A1F2B] hover:text-[#A63A32] hover:bg-white'
+              : 'bg-white/85 text-[#0E1420] hover:text-[#A63A32] hover:bg-white'
           }`}
           aria-label="Toggle wishlist"
         >
@@ -101,7 +96,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               e.stopPropagation();
               onViewDetails(product);
             }}
-            className="p-2.5 rounded-full bg-white/90 hover:bg-white text-[#1A1F2B] shadow-md transition-colors"
+            className="p-2.5 rounded-full bg-white/90 hover:bg-white text-[#0E1420] shadow-md transition-colors"
             title="View Details"
           >
             <Eye size={15} />
@@ -114,7 +109,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div>
           {/* Reference Image Tag (Helpful for user context) */}
           {product.referenceImageName && (
-            <span className="text-[10px] text-[#C9A461] uppercase tracking-wider font-semibold block mb-1">
+            <span className="text-[10px] text-[#A63A32] uppercase tracking-wider font-semibold block mb-1">
               Ref: {product.referenceImageName.split(' ')[0]}
             </span>
           )}
@@ -122,23 +117,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Title */}
           <h3
             onClick={() => onViewDetails(product)}
-            className="font-serif text-base sm:text-lg text-[#1A1F2B] font-medium leading-snug hover:text-[#A63A32] transition-colors cursor-pointer"
+            className="font-serif text-base sm:text-lg text-[#0E1420] font-medium leading-snug hover:text-[#A63A32] transition-colors cursor-pointer"
           >
             {product.name}
           </h3>
 
           {/* Short Evocative Subtitle */}
-          <p className="text-xs text-[#1A1F2B]/60 line-clamp-1 mt-1 font-sans">
+          <p className="text-xs text-[#0E1420]/70 line-clamp-1 mt-1 font-sans">
             {product.tagline}
           </p>
 
           {/* Star Rating */}
-          <div className="flex items-center gap-1.5 mt-2 text-xs text-[#1A1F2B]/70">
+          <div className="flex items-center gap-1.5 mt-2 text-xs text-[#0E1420]/75">
             <div className="flex items-center text-[#C9A461]">
               <Star size={12} className="fill-current" />
             </div>
-            <span className="font-semibold text-xs text-[#1A1F2B]">{product.rating}</span>
-            <span className="text-[#1A1F2B]/40">({product.reviewCount})</span>
+            <span className="font-semibold text-xs text-[#0E1420]">{product.rating}</span>
+            <span className="text-[#0E1420]/45">({product.reviewCount})</span>
           </div>
         </div>
 
@@ -146,11 +141,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="mt-4 pt-3 border-t border-[#E8E3DA] flex items-center justify-between">
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-base sm:text-lg font-semibold text-[#1A1F2B]">
+              <span className="font-serif text-base sm:text-lg font-semibold text-[#0E1420]">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.originalPrice && (
-                <span className="text-xs text-[#1A1F2B]/40 line-through">
+                <span className="text-xs text-[#0E1420]/40 line-through">
                   ₹{product.originalPrice.toLocaleString('en-IN')}
                 </span>
               )}
